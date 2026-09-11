@@ -45,7 +45,7 @@
       (placeholder ? ' placeholder="' + esc(placeholder) + '"' : '') + '></div>';
   }
   function uid(prefix) { return prefix + "_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
-  function initials(name) { return (name || "?").trim().split(/\s+/).slice(0, 2).map(function (w) { return w[0]; }).join("").toUpperCase(); }
+  function initials(name) { return (name || "?").trim().split(/\s+/).slice(0, 2).map(function (w) { return /^\d+$/.test(w) ? w : w[0]; }).join("").toUpperCase(); }
   function apiHeaders() { return { "Content-Type": "application/json", "x-admin-key": state.adminKey }; }
 
   // ================= Connexion (code admin) =================
