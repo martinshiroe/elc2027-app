@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: elc2027-app
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_OWNER
+        sync: false
+      - key: GITHUB_REPO
+        sync: false
+      - key: GITHUB_BRANCH
+        value: main
+      - key: ADMIN_KEY
+        sync: false
