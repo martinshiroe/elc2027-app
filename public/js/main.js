@@ -24,7 +24,7 @@
     });
   }
   function initials(name) {
-    return (name || "?").trim().split(/\s+/).slice(0, 2).map(function (w) { return w[0]; }).join("").toUpperCase();
+    return (name || "?").trim().split(/\s+/).slice(0, 2).map(function (w) { return /^\d+$/.test(w) ? w : w[0]; }).join("").toUpperCase();
   }
   var MEDAL_COLORS = { 1: "#ffd700", 2: "#c9d3e0", 3: "#cd7f32" };
   function medalSvg(rank) {
