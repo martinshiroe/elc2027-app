@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELC 2027 — Administration</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABaqSURBVHhe7Z1pcBXFGob794x9/uKFAWDRhyUYCAWVXIojrFUtAcWcRAQUFXADFCy7BBRREAbEuF0tUwCpBvQjKLpQbGMBSMAnIEgXcUDSIigj2rbcPncz5zsyc7jkz03OS/qqeOsnMnJ6e7nd6/famUB4l3E+HDjyeD01ny6trwZlS9dK7T/xE73/f75q2ORgKvL73/+t2n3zj9DJq/OG/1E19MnJvvcU9nrtwYo3XM+9M+aVL2t9YQ+PmvVI7T7oa+m5C9/Wvl89Z8qbdyf1H6fk8xaesTt+Aza9O87OuHb0k/95zX/UvvZ3/9jK/AlNhOPFezXPgEIsKh4mnBFxSU+VeS+8IqIWL3Hm5S6zvzHfHzlgSN2/vTLzqbnmr+bpN6TWv9NKq8W9O+bruv/3EW/85sMFvcpKPXuJb+kdfIzZ8Rr9uSaeSWnv58UzZ0zXOnp+aVWnRy0zTLbUu6nq/rr+j9OPYVdD3Wg/D3FdxWXJnU5aA0EAWoTwPPy8py8vDwkAaAWAVptbGwEBAT4+PhAUlKS/mfQMlYCbG1txcnJCQ6HAy4uLpCcnAyj0Qg7OzsQCARYW1uzt7dHW1sbdnZ2eOaZZ1jY8czMBw8+2rjxg0vLtP7q0KHDBg4c2LlLh8+eXQIpn+DnLb+/2wr5EFT9AAAAAElFTkSuQmCC">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Écran de connexion (code administrateur) -->
+<div class="admin-login" id="loginScreen">
+  <div class="logo-box"><img class="elc-logo-img" alt="ELC"></div>
+  <h2>Administration ELC 2027</h2>
+  <p>Entrez le code administrateur affiché dans le terminal au démarrage du serveur (ou dans <code>data/admin-code.txt</code>).</p>
+  <input type="text" id="loginCode" inputmode="numeric" maxlength="6" placeholder="••••••" autofocus>
+  <div class="err" id="loginErr"></div>
+  <button class="btn" id="loginBtn" style="width:100%">Se connecter</button>
+</div>
+
+<div id="adminApp" hidden>
+
+<div class="topbar">
+  <div class="topbar-brand">
+    <div class="logo-box"><img class="elc-logo-img" alt="ELC"></div>
+    <div>
+      <div class="brand-title">ADMINISTRATION ELC 2027</div>
+      <div class="brand-sub">Les modifications sont enregistrées de façon persistante (fichier local ou dépôt GitHub selon le mode)</div>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <a class="link-btn" href="index.html">← Vue publique</a>
+    <button class="link-btn" id="logoutBtn" style="background:transparent;cursor:pointer">Verrouiller</button>
+  </div>
+</div>
+
+<div class="admin-wrap">
+
+  <div class="admin-tabs" id="railTabs">
+    <button class="tab-btn active" data-panel="a-meta">Organisateur &amp; saison</button>
+    <button class="tab-btn" data-panel="a-v1">Visuel 1 · 4 Titres</button>
+    <button class="tab-btn" data-panel="a-v2">Visuel 2 · Calendrier</button>
+    <button class="tab-btn" data-panel="a-v3">Visuel 3 · PUBG &amp; FF</button>
+    <button class="tab-btn" data-panel="a-v4">Visuel 4 · Bracket</button>
+    <button class="tab-btn" data-panel="a-comp">Compétition &amp; Points</button>
+    <button class="tab-btn" data-panel="a-manches">Manches &amp; Résultats</button>
+    <button class="tab-btn" data-panel="a-joueurs">Joueurs</button>
+    <button class="tab-btn" data-panel="a-pantheon">Panthéon</button>
+  </div>
+
+  <div class="admin-panel active" id="a-meta">
+    <h2 class="admin-h">Organisateur &amp; saison</h2>
+    <p class="admin-desc">Ces informations apparaissent sur les 4 visuels. Dénomination officielle : « Ligue Esport Est Cameroun » — jamais « League ».</p>
+    <div class="field-row">
+      <div class="field-group"><label>Organisateur</label><input type="text" data-path="meta.organisateur"></div>
+      <div class="field-group"><label>Saison</label><input type="text" data-path="meta.saison"></div>
+    </div>
+    <div class="field-group"><label>Badge en-tête</label><input type="text" data-path="meta.badgeHaut"></div>
+  </div>
+
+  <div class="admin-panel" id="a-v1">
+    <h2 class="admin-h">Visuel 1 — Annonce des quatre titres</h2>
+    <p class="admin-desc">Laissez un champ vide plutôt que d'écrire « TBA » ou « À annoncer » — la mention n'apparaît alors pas sur le visuel.</p>
+    <div class="field-group"><label>Bandeau organisateur</label><input type="text" data-path="visual1.bandeau"></div>
+    <div class="field-row three">
+      <div class="field-group"><label>Titre central</label><input type="text" data-path="visual1.titreCentral"></div>
+      <div class="field-group"><label>Sous-titre central</label><input type="text" data-path="visual1.sousTitreCentral"></div>
+      <div class="field-group"><label>Mention bas de visuel</label><input type="text" data-path="visual1.footer"></div>
+    </div>
+    <div class="field-group"><label>Mention pied gauche</label><input type="text" data-path="visual1.footerGauche"></div>
+    <div id="v1-titres-cards"></div>
+  </div>
+
+  <div class="admin-panel" id="a-v2">
+    <h2 class="admin-h">Visuel 2 — Calendrier prévisionnel &amp; structure</h2>
+    <div class="field-row">
+      <div class="field-group"><label>Sous-titre bandeau</label><input type="text" data-path="visual2.bandeauSousTitre"></div>
+      <div class="field-group"><label>Libellé calendrier</label><input type="text" data-path="visual2.calendrierLabel"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Période affichée</label><input type="text" data-path="visual2.calendrierPeriode"></div>
+      <div class="field-group"><label>Cash prize &amp; récompenses</label><input type="text" data-path="visual2.structure.cashPrize" placeholder="Laisser vide si inconnu"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Plateformes</label><input type="text" data-path="visual2.plateformes"></div>
+      <div class="field-group"><label>Diffusion</label><input type="text" data-path="visual2.diffusion"></div>
+    </div>
+    <div class="sub-card"><h4>Structure</h4>
+      <div class="field-row three">
+        <div class="field-group"><label>Équipes MOBA</label><input type="text" data-path="visual2.structure.equipesMoba"></div>
+        <div class="field-group"><label>Joueurs TPS</label><input type="text" data-path="visual2.structure.joueursTps"></div>
+        <div class="field-group"><label>Qualifs / Finales</label><input type="text" data-path="visual2.structure.qualifsFinales"></div>
+      </div>
+    </div>
+    <div id="v2-phases-cards"></div>
+  </div>
+
+  <div class="admin-panel" id="a-v3">
+    <h2 class="admin-h">Visuel 3 — PUBG Mobile &amp; Free Fire</h2>
+    <div class="field-row">
+      <div class="field-group"><label>Sous-titre</label><input type="text" data-path="visual3.sousTitre"></div>
+      <div class="field-group"><label>Badges (séparés par ·)</label><input type="text" data-badges="visual3"></div>
+    </div>
+    <div class="sub-card"><h4>PUBG Mobile</h4>
+      <div class="field-row three">
+        <div class="field-group"><label>Badge lancement</label><input type="text" data-path="visual3.pubg.lancementBadge"></div>
+        <div class="field-group"><label>Places joueurs</label><input type="text" data-path="visual3.pubg.placesJoueurs"></div>
+        <div class="field-group"><label>Note</label><input type="text" data-path="visual3.pubg.note"></div>
+      </div>
+    </div>
+    <div class="sub-card"><h4>Free Fire</h4>
+      <div class="field-row three">
+        <div class="field-group"><label>Badge lancement</label><input type="text" data-path="visual3.ff.lancementBadge"></div>
+        <div class="field-group"><label>Places joueurs</label><input type="text" data-path="visual3.ff.placesJoueurs"></div>
+        <div class="field-group"><label>Note</label><input type="text" data-path="visual3.ff.note"></div>
+      </div>
+    </div>
+    <div class="field-group"><label>Règlement</label><textarea data-path="visual3.reglement" placeholder="Laisser vide tant que non arrêté"></textarea></div>
+    <div class="field-group"><label>Étapes du tournoi</label><textarea data-path="visual3.etapesTournoi" placeholder="Laisser vide si inconnues"></textarea></div>
+    <div class="field-group"><label>Prix total</label><input type="text" data-path="visual3.prixTotal" placeholder="Laisser vide si inconnu"></div>
+    <div class="field-row">
+      <div class="field-group"><label>Pied gauche</label><input type="text" data-path="visual3.footerGauche"></div>
+      <div class="field-group"><label>Pied droite</label><input type="text" data-path="visual3.footerDroite"></div>
+    </div>
+  </div>
+
+  <div class="admin-panel" id="a-v4">
+    <h2 class="admin-h">Visuel 4 — Bracket MOBA (officiel, joint)</h2>
+    <div class="field-row">
+      <div class="field-group"><label>Sous-titre</label><input type="text" data-path="visual4.sousTitre"></div>
+      <div class="field-group"><label>Prize pool</label><input type="text" data-path="visual4.prizePool" placeholder="Laisser vide si inconnu"></div>
+    </div>
+    <div class="field-row">
+      <div class="field-group"><label>Champion / vainqueur</label><input type="text" data-path="visual4.champion"></div>
+      <div class="field-group"><label>Badges (séparés par ·)</label><input type="text" data-badges="visual4"></div>
+    </div>
+    <div class="sub-card"><h4>Équipes — Série de finale (16 entrées)</h4>
+      <div class="bracket-admin-grid" id="v4-equipes-fields"></div>
+    </div>
+    <div class="sub-card"><h4>Quarts de finale (4 vainqueurs)</h4>
+      <div class="bracket-admin-grid" id="v4-qf-fields"></div>
+    </div>
+    <div class="sub-card"><h4>Demi-finales (2 vainqueurs)</h4>
+      <div class="bracket-admin-grid" id="v4-sf-fields"></div>
+    </div>
+  </div>
+
+  <div class="admin-panel" id="a-comp">
+    <h2 class="admin-h">Compétition &amp; barèmes de points</h2>
+    <p class="admin-desc">Calendrier, barème de points et (pour les titres MOBA) bracket propres à chaque titre — utilisés pour calculer les classements automatiquement.</p>
+    <div id="comp-cards"></div>
+  </div>
+
+  <div class="admin-panel" id="a-manches">
+    <h2 class="admin-h">Manches &amp; résultats</h2>
+    <p class="admin-desc">Saisissez les résultats au fil du tournoi : matchs pour les titres MOBA, classements de manche (place + éliminations) pour les titres TPS. Le classement se recalcule automatiquement.</p>
+    <div id="manches-cards"></div>
+  </div>
+
+  <div class="admin-panel" id="a-joueurs">
+    <h2 class="admin-h">Joueurs — inscriptions</h2>
+    <p class="admin-desc">Importez les réponses de votre Google Form (export CSV de la Google Sheet liée), puis complétez équipe et photo si besoin.</p>
+    <div class="import-box">
+      <div style="font-size:12.5px;margin-bottom:10px;font-weight:700">Importer un CSV</div>
+      <input type="file" id="csvFile" accept=".csv,text/csv">
+      <div class="field-group" style="margin-top:12px;text-align:left">
+        <label>…ou collez le contenu du CSV ici</label>
+        <textarea id="csvPaste" placeholder="nom,pseudo,jeu,equipe,contact&#10;Jean Mballa,J-Wolf,hok,Les Lions,jean@mail.com"></textarea>
+      </div>
+      <button class="btn secondary" id="csvParseBtn" style="margin-top:8px">Analyser le CSV</button>
+      <div id="csvMapWrap" hidden style="margin-top:14px;text-align:left">
+        <div style="font-size:11.5px;color:var(--text-dim);margin-bottom:8px">Faites correspondre vos colonnes aux champs attendus :</div>
+        <div id="csvMapRows"></div>
+        <button class="btn" id="csvImportBtn" style="margin-top:10px">Importer <span id="csvCount"></span> joueur(s)</button>
+      </div>
+    </div>
+
+    <div class="players-toolbar" id="joueursFilterAdmin"></div>
+    <div id="joueursListAdmin"></div>
+    <button class="btn secondary" id="addPlayerBtn" style="margin-top:10px">+ Ajouter un joueur manuellement</button>
+  </div>
+
+  <div class="admin-panel" id="a-pantheon">
+    <h2 class="admin-h">Panthéon de la saison</h2>
+    <p class="admin-desc">Titres officiels ELC — choisissez la catégorie dans la liste, elle n'est pas modifiable au cas par cas :<br>
+      <b>GodLike</b> (meilleur MOBA) · <b>Demon King</b> (meilleur TPS) · <b>MVP</b> (MOBA ou TPS) · <b>Top Fraggeur</b> (TPS, total d'éliminations) · <b>G.O.A.T</b> (toutes compétitions confondues — champion avec le plus de trophées ELC ; à réserver à partir d'un éventuel double titre en édition 2+).<br>
+      Les « leaders » automatiques (premier de chaque classement) s'affichent séparément, sans configuration.</p>
+    <div id="pantheonListAdmin"></div>
+    <button class="btn secondary" id="addPantheonBtn" style="margin-top:10px">+ Ajouter une distinction</button>
+  </div>
+
+  <div class="save-bar">
+    <span class="status-msg" id="saveStatus">Chargement…</span>
+    <div style="display:flex;gap:10px">
+      <button class="btn secondary" id="reloadBtn">Recharger</button>
+      <button class="btn" id="saveBtn">Enregistrer</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
+
