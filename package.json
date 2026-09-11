@@ -1,0 +1,16 @@
+{
+  "name": "elc-2027-app",
+  "version": "1.0.0",
+  "description": "Application ELC 2027 - Pack des visuels officiels avec interface admin",
+  "private": true,
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}
