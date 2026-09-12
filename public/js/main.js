@@ -117,7 +117,7 @@
     host.innerHTML =
       '<div class="footer-wrap">' +
         '<div class="footer-col footer-brand-col">' +
-          '<div class="footer-brand"><div class="logo-box"><img class="elc-logo-img" alt="ELC"></div>' +
+          '<div class="footer-brand"><div class="footer-logo-badge"><img src="img/logo-league.png" alt="Ligue Esport Est Cameroun"></div>' +
             '<div><div class="footer-title">EAST LEAGUE OF CAMEROUN</div><div class="footer-sub">' + esc(meta.organisateur || "") + '</div></div></div>' +
           (socialHtml ? '<div class="footer-social">' + socialHtml + '</div>' : "") +
         '</div>' +
