@@ -13,6 +13,16 @@
   --red:#ef4444;
   --purple:#a78bfa;
 }
+:root[data-theme="light"]{
+  --bg:#f5f7fb;
+  --panel:#ffffff;
+  --panel-2:#eef1f7;
+  --border:#dbe1eb;
+  --border-soft:#c7cfdd;
+  --text:#141a2a;
+  --text-dim:#5b6478;
+}
+html{transition:background-color .15s;}
 
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;}
@@ -50,6 +60,16 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
   padding:8px 14px;border-radius:8px;font-weight:600;transition:.15s;
 }
 .link-btn:hover{color:var(--text);border-color:var(--border-soft);}
+.btn-inscription{
+  background:var(--green);color:#06210f;text-decoration:none;font-size:12.5px;font-weight:800;
+  padding:8px 16px;border-radius:8px;transition:.15s;
+}
+.btn-inscription:hover{filter:brightness(1.08);}
+.icon-toggle{
+  background:var(--panel);border:1px solid var(--border);color:var(--text);cursor:pointer;
+  width:36px;height:36px;border-radius:8px;font-size:15px;line-height:1;
+}
+.icon-toggle:hover{border-color:var(--border-soft);}
 
 /* ---------- Page shell ---------- */
 .page-wrap{max-width:960px;margin:24px auto 60px;padding:0 20px;}
@@ -159,6 +179,7 @@ td.clan-cell{color:var(--text-dim);font-size:11.5px;}
 .info-box .content.filled{color:var(--text);font-style:normal;}
 
 /* ---------- Visual 4 : bracket ---------- */
+.bracket-hint{display:none;font-size:10.5px;color:var(--text-dim);text-align:center;margin-top:14px;}
 .bracket-wrap{margin-top:20px;overflow-x:auto;}
 .bracket{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:18px;min-width:680px;}
 .bcol-title{font-size:9.5px;color:var(--text-dim);font-weight:700;letter-spacing:.5px;margin-bottom:10px;text-align:center;}
@@ -173,6 +194,7 @@ td.clan-cell{color:var(--text-dim);font-size:11.5px;}
   .v2-body{grid-template-columns:1fr;}
   .v3-grid,.v3-info{grid-template-columns:1fr;}
   .tabs{width:100%;}
+  .bracket-hint{display:block;}
 }
 
 /* ---------- Admin ---------- */
@@ -354,3 +376,28 @@ table.data-table tr.rank-3 .rk{color:#c98a4a;font-weight:800;}
 .icon-btn:hover{color:var(--red);border-color:var(--red);}
 .photo-upload-label{display:block;width:36px;height:36px;border-radius:50%;cursor:pointer;position:relative;}
 .photo-upload-label input{display:none;}
+
+/* ---------- Horodatage classements ---------- */
+.updated-hint{font-size:11px;color:var(--text-dim);margin-bottom:12px;}
+
+/* ---------- Footer global ---------- */
+.site-footer{border-top:1px solid var(--border);margin-top:40px;padding:26px 28px 20px;}
+.footer-wrap{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start;}
+.footer-brand{display:flex;align-items:center;gap:12px;}
+.footer-title{font-size:13px;font-weight:800;letter-spacing:.3px;}
+.footer-sub{font-size:11px;color:var(--text-dim);margin-top:2px;}
+.footer-col{display:flex;flex-direction:column;gap:6px;font-size:12px;}
+.footer-col a{color:var(--text-dim);text-decoration:none;}
+.footer-col a:hover{color:var(--text);}
+.footer-social{flex-direction:row;flex-wrap:wrap;gap:12px;}
+.footer-bottom{max-width:960px;margin:20px auto 0;padding-top:14px;border-top:1px solid var(--border-soft);font-size:11px;color:var(--text-dim);text-align:center;}
+
+/* ---------- Allègement de l'en-tête mobile ---------- */
+@media (max-width:640px){
+  .topbar{padding:10px 14px;gap:8px;}
+  .logo-box{width:34px;height:34px;}
+  .brand-title{font-size:12.5px;}
+  .brand-sub{display:none;}
+  .season-pill{display:none;}
+  .btn-inscription{padding:7px 12px;font-size:11.5px;}
+}
