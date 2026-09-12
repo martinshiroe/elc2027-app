@@ -48,3 +48,4 @@ Le lien public apparaît en haut de la page Render
   moment venu.
 - Le mode local (`Démarrer-ELC2027.bat`) continue de fonctionner
   indépendamment de ce déploiement.
+
