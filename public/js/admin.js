@@ -539,13 +539,18 @@
       p.jeu = found || "hok";
       return p;
     });
+var invalides = imported.filter(function (p) { return !p.nom.trim() && !p.pseudo.trim(); }).length;
     state.data.joueurs = (state.data.joueurs || []).concat(imported);
     markDirty();
     document.getElementById("csvMapWrap").hidden = true;
     document.getElementById("csvFile").value = ""; document.getElementById("csvPaste").value = "";
     renderJoueursAdmin();
-    setStatus(imported.length + " joueur(s) importé(s) — vérifiez le jeu attribué à chacun, puis Enregistrer.", "ok");
-  });
+    if (invalides > 0) {
+      setStatus(imported.length + " joueur(s) importé(s), dont " + invalides + " sans nom ni pseudo (vérifiez le mapping des colonnes) — puis Enregistrer.", "err");
+    } else {
+      setStatus(imported.length + " joueur(s) importé(s) avec succès — vérifiez le jeu attribué à chacun, puis Enregistrer.", "ok");
+    }
+ });
 
   // ---------------- Panthéon ----------------
   function renderPantheonAdmin() {
