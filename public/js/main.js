@@ -70,26 +70,60 @@
     var reseaux = meta.reseaux || {};
     var contact = meta.contact || {};
     var liens = meta.liens || {};
-    var socialLabels = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube", discord: "Discord", linkedin: "LinkedIn" };
-    var socialHtml = Object.keys(socialLabels).map(function (k) {
+
+    var socialIcons = {
+      facebook: { label: "Facebook", icon: "fa-brands fa-facebook-f" },
+      instagram: { label: "Instagram", icon: "fa-brands fa-instagram" },
+      tiktok: { label: "TikTok", icon: "fa-brands fa-tiktok" },
+      youtube: { label: "YouTube", icon: "fa-brands fa-youtube" },
+      discord: { label: "Discord", icon: "fa-brands fa-discord" },
+      linkedin: { label: "LinkedIn", icon: "fa-brands fa-linkedin-in" }
+    };
+    var socialHtml = Object.keys(socialIcons).map(function (k) {
       var url = reseaux[k] && reseaux[k].trim();
-      return url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + socialLabels[k] + '</a>' : "";
+      if (!url) return "";
+      var ic = socialIcons[k];
+      return '<a class="social-icon" href="' + esc(url) + '" target="_blank" rel="noopener" title="' + esc(ic.label) + '" aria-label="' + esc(ic.label) + '"><i class="' + ic.icon + '"></i></a>';
     }).filter(Boolean).join("");
-    var linksHtml = [
-      liens.cgu && liens.cgu.trim() ? '<a href="' + esc(liens.cgu) + '" target="_blank" rel="noopener">CGU / Règlement</a>' : "",
-      liens.statuts && liens.statuts.trim() ? '<a href="' + esc(liens.statuts) + '" target="_blank" rel="noopener">Statuts &amp; homologation</a>' : ""
+
+    var navItems = [
+      { id: "sec-visuels", label: "Visuels officiels" },
+      { id: "sec-competition", label: "Compétition" },
+      { id: "sec-classements", label: "Classements" },
+      { id: "sec-joueurs", label: "Joueurs" },
+      { id: "sec-pantheon", label: "Panthéon" }
+    ];
+    var navHtml = navItems.map(function (n) {
+      return '<button type="button" class="footer-link-btn" data-goto-section="' + n.id + '">' + esc(n.label) + '</button>';
+    }).join("");
+
+    function legalEntry(label, texte, url) {
+      var t = texte && texte.trim();
+      var u = url && url.trim();
+      if (t) return '<button type="button" class="footer-link-btn" data-legal="1" data-legal-title="' + esc(label) + '" data-legal-text="' + esc(t) + '">' + esc(label) + '</button>';
+      if (u) return '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(label) + '</a>';
+      return "";
+    }
+    var legalHtml = [
+      legalEntry("CGU / Règlement", liens.cguTexte, liens.cgu),
+      legalEntry("Statuts & homologation", liens.statutsTexte, liens.statuts)
     ].filter(Boolean).join("");
+
     var contactHtml = [
       contact.telephone && contact.telephone.trim() ? '<span>📞 ' + esc(contact.telephone) + '</span>' : "",
       contact.email && contact.email.trim() ? '<a href="mailto:' + esc(contact.email) + '">✉ ' + esc(contact.email) + '</a>' : ""
     ].filter(Boolean).join("");
+
     host.innerHTML =
       '<div class="footer-wrap">' +
-        '<div class="footer-brand"><div class="logo-box"><img class="elc-logo-img" alt="ELC"></div>' +
-          '<div><div class="footer-title">EAST LEAGUE OF CAMEROUN</div><div class="footer-sub">' + esc(meta.organisateur || "") + '</div></div></div>' +
-        (socialHtml ? '<div class="footer-col footer-social">' + socialHtml + '</div>' : "") +
-        (linksHtml ? '<div class="footer-col footer-links">' + linksHtml + '</div>' : "") +
-        (contactHtml ? '<div class="footer-col footer-contact">' + contactHtml + '</div>' : "") +
+        '<div class="footer-col footer-brand-col">' +
+          '<div class="footer-brand"><div class="logo-box"><img class="elc-logo-img" alt="ELC"></div>' +
+            '<div><div class="footer-title">EAST LEAGUE OF CAMEROUN</div><div class="footer-sub">' + esc(meta.organisateur || "") + '</div></div></div>' +
+          (socialHtml ? '<div class="footer-social">' + socialHtml + '</div>' : "") +
+        '</div>' +
+        '<div class="footer-col"><h4>Navigation</h4>' + navHtml + '</div>' +
+        (legalHtml ? '<div class="footer-col"><h4>Informations légales</h4>' + legalHtml + '</div>' : "") +
+        (contactHtml ? '<div class="footer-col"><h4>Contact</h4>' + contactHtml + '</div>' : "") +
       '</div>' +
       '<div class="footer-bottom">Saison ' + esc(meta.saison || "") + ' · © ' + new Date().getFullYear() + ' Ligue Esport Est Cameroun</div>';
     document.querySelectorAll("#siteFooter .elc-logo-img").forEach(function (img) { img.src = LOGO_DATA_URI; });
@@ -544,14 +578,43 @@
   }
 
   // Nav principale (sections)
+  function switchMainSection(sectionId) {
+    document.querySelectorAll(".main-nav-btn").forEach(function (b) { b.classList.toggle("active", b.dataset.main === sectionId); });
+    document.querySelectorAll(".main-section").forEach(function (s) { s.classList.toggle("active", s.id === sectionId); });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   document.getElementById("mainNav").addEventListener("click", function (e) {
     var btn = e.target.closest(".main-nav-btn");
     if (!btn) return;
-    document.querySelectorAll(".main-nav-btn").forEach(function (b) { b.classList.remove("active"); });
-    btn.classList.add("active");
-    document.querySelectorAll(".main-section").forEach(function (s) { s.classList.remove("active"); });
-    document.getElementById(btn.dataset.main).classList.add("active");
+    switchMainSection(btn.dataset.main);
   });
+  // Liens de navigation dans le pied de page (délégation, car le footer est régénéré à chaque rafraîchissement)
+  document.addEventListener("click", function (e) {
+    var navBtn = e.target.closest("[data-goto-section]");
+    if (navBtn) { switchMainSection(navBtn.dataset.gotoSection); return; }
+    var legalBtn = e.target.closest("[data-legal]");
+    if (legalBtn) { openLegalModal(legalBtn.dataset.legalTitle, legalBtn.dataset.legalText); return; }
+  });
+
+  // ---------------- Fenêtre documents légaux ----------------
+  function openLegalModal(title, text) {
+    var overlay = document.getElementById("legalModalOverlay");
+    if (!overlay) return;
+    document.getElementById("legalModalTitle").textContent = title;
+    document.getElementById("legalModalBody").textContent = text;
+    overlay.hidden = false;
+  }
+  function closeLegalModal() {
+    var overlay = document.getElementById("legalModalOverlay");
+    if (overlay) overlay.hidden = true;
+  }
+  var legalOverlayEl = document.getElementById("legalModalOverlay");
+  if (legalOverlayEl) {
+    legalOverlayEl.addEventListener("click", function (e) { if (e.target === legalOverlayEl) closeLegalModal(); });
+  }
+  var legalCloseBtn = document.getElementById("legalModalClose");
+  if (legalCloseBtn) legalCloseBtn.addEventListener("click", closeLegalModal);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLegalModal(); });
 
   // Tabs (visuels officiels)
   document.getElementById("tabs").addEventListener("click", function (e) {

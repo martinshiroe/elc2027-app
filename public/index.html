@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ELC 2027 — Pack des 4 Visuels Officiels</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
@@ -222,6 +223,16 @@
 </main>
 
 <footer class="site-footer" id="siteFooter"></footer>
+
+<div class="legal-modal-overlay" id="legalModalOverlay" hidden>
+  <div class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+    <div class="legal-modal-head">
+      <h3 id="legalModalTitle"></h3>
+      <button type="button" class="icon-toggle" id="legalModalClose" aria-label="Fermer">✕</button>
+    </div>
+    <div class="legal-modal-body" id="legalModalBody"></div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="js/main.js"></script>

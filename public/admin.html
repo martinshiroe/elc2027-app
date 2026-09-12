@@ -79,10 +79,11 @@
     </div>
 
     <div class="sub-card"><h4>Documents légaux (pied de page)</h4>
-      <div class="field-row">
-        <div class="field-group"><label>Lien CGU / règlement de participation</label><input type="text" data-path="meta.liens.cgu" placeholder="Laisser vide si non publié"></div>
-        <div class="field-group"><label>Lien statuts &amp; homologation</label><input type="text" data-path="meta.liens.statuts" placeholder="Laisser vide si non publié"></div>
-      </div>
+      <p class="admin-desc" style="margin-bottom:10px">Tapez le texte directement ci-dessous : il s'affiche dans une fenêtre sur le site, sans avoir besoin d'une page séparée. Le champ « lien » reste disponible si vous préférez pointer vers un document déjà hébergé ailleurs (PDF, Google Doc...) — dans ce cas laissez le texte vide.</p>
+      <div class="field-group"><label>Texte CGU / règlement de participation</label><textarea data-path="meta.liens.cguTexte" placeholder="Laisser vide si vous préférez utiliser le lien ci-dessous"></textarea></div>
+      <div class="field-group"><label>Lien CGU / règlement (si hébergé ailleurs)</label><input type="text" data-path="meta.liens.cgu" placeholder="Laisser vide si non publié"></div>
+      <div class="field-group"><label>Texte statuts &amp; homologation</label><textarea data-path="meta.liens.statutsTexte" placeholder="Laisser vide si vous préférez utiliser le lien ci-dessous"></textarea></div>
+      <div class="field-group"><label>Lien statuts &amp; homologation (si hébergé ailleurs)</label><input type="text" data-path="meta.liens.statuts" placeholder="Laisser vide si non publié"></div>
     </div>
   </div>
 
