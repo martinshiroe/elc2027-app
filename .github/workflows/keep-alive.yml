@@ -1,0 +1,19 @@
+name: Garder ELC 2027 éveillé
+
+on:
+  schedule:
+    # Toutes les 10 minutes — sous la limite de 15 min avant mise en veille de Render
+    - cron: '*/10 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping du site public
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://elc2027-app.onrender.com/)
+          echo "Réponse du site : $code"
+          if [ "$code" != "200" ]; then
+            echo "::warning::Le site a répondu avec le code $code"
+          fi
