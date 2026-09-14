@@ -93,7 +93,7 @@
       { id: "sec-joueurs", label: "Joueurs" },
       { id: "sec-pantheon", label: "Panthéon" }
     ];
-    var navHtml = navItems.map(function (n) {
+    var navHtml = '<a href="index.html">Accueil</a>' + navItems.map(function (n) {
       return '<button type="button" class="footer-link-btn" data-goto-section="' + n.id + '">' + esc(n.label) + '</button>';
     }).join("");
 
@@ -571,8 +571,19 @@
       "Prize Pool : " + (v.prizePool && v.prizePool.trim() ? v.prizePool : "Détails à venir");
   }
 
+  var HASH_TO_SECTION = { visuels: "sec-visuels", competition: "sec-competition", classements: "sec-classements", joueurs: "sec-joueurs", pantheon: "sec-pantheon" };
+  var hashApplied = false;
+  function applyHashSection() {
+    if (hashApplied) return;
+    var key = (location.hash || "").replace("#", "");
+    if (HASH_TO_SECTION[key]) { switchMainSection(HASH_TO_SECTION[key]); hashApplied = true; }
+  }
+
   function load() {
-    return fetch("/api/data").then(function (r) { return r.json(); }).then(renderAll).catch(function (err) {
+    return fetch("/api/data").then(function (r) { return r.json(); }).then(function (d) {
+      renderAll(d);
+      applyHashSection();
+    }).catch(function (err) {
       console.error("Impossible de charger les données locales :", err);
     });
   }
