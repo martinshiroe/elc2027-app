@@ -1,13 +1,19 @@
-// ELC 2027 - Serveur (double mode)
+// ELC 2027 - Serveur (triple mode)
 //
 // MODE LOCAL (par défaut, via Démarrer-ELC2027.bat) : les données et les
 // photos sont lues/écrites dans le dossier ./data sur cet ordinateur.
 //
-// MODE GITHUB (déploiement cloud gratuit — Render, Railway...) : activé
-// automatiquement dès que GITHUB_TOKEN + GITHUB_OWNER + GITHUB_REPO sont
-// définis en variables d'environnement. Chaque écriture devient un commit
-// dans un dépôt GitHub dédié, ce qui survit aux redémarrages d'un
-// hébergement à disque non persistant et garde tout l'historique.
+// MODE SUPABASE (prioritaire dès qu'il est configuré) : les DONNÉES (compétition,
+// joueurs, classements, Panthéon) sont stockées dans une vraie base Postgres
+// gérée par Supabase. Activé dès que SUPABASE_URL + SUPABASE_SERVICE_KEY sont
+// définis (variables d'environnement).
+//
+// MODE GITHUB (secours automatique si Supabase n'est pas configuré, ou
+// toujours utilisé pour les PHOTOS même en mode Supabase) : activé dès que
+// GITHUB_TOKEN + GITHUB_OWNER + GITHUB_REPO sont définis. Chaque écriture
+// devient un commit dans un dépôt GitHub dédié, ce qui survit aux
+// redémarrages d'un hébergement à disque non persistant et garde tout
+// l'historique.
 //
 // Protection admin : un code est requis pour toute écriture (/api/data en
 // POST, upload/suppression de photo). La lecture reste libre — c'est ce qui
@@ -19,6 +25,7 @@ const path = require('path');
 const crypto = require('crypto');
 const os = require('os');
 const gh = require('./githubStore');
+const sb = require('./supabaseStore');
 
 const app = express();
 const PORT = process.env.PORT || 4027;
@@ -30,19 +37,29 @@ const ADMIN_KEY_FILE = path.join(DATA_DIR, 'admin-code.txt');
 const DATA_REPO_PATH = 'data/elc2027-data.json';
 const PHOTOS_REPO_PREFIX = 'data/photos';
 
-if (!gh.enabled) {
+// Mode effectif pour les DONNÉES : supabase > github > local. Les PHOTOS restent
+// sur GitHub dès qu'il est configuré, indépendamment du mode choisi pour les données.
+const DATA_MODE = sb.enabled ? 'supabase' : (gh.enabled ? 'github' : 'local');
+const CLOUD_MODE = DATA_MODE !== 'local';
+
+if (!CLOUD_MODE) {
   for (const dir of [DATA_DIR, PHOTOS_DIR]) {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   }
 }
+if (DATA_MODE !== 'local' && !gh.enabled) {
+  // Toujours créer le dossier photos local si GitHub n'est pas dispo pour les servir
+  // (sinon les photos uploadées en mode Supabase-sans-GitHub ne survivraient à rien).
+  if (!fs.existsSync(PHOTOS_DIR)) fs.mkdirSync(PHOTOS_DIR, { recursive: true });
+}
 
 // --- Code admin ---
-// En mode GitHub : DOIT venir de la variable d'environnement ADMIN_KEY
-// (définie dans le tableau de bord de l'hébergeur — jamais dans le code).
+// En mode cloud (Supabase ou GitHub) : DOIT venir de la variable d'environnement
+// ADMIN_KEY (définie dans le tableau de bord de l'hébergeur — jamais dans le code).
 // En mode local : généré une fois et conservé dans un fichier, comme avant.
 let ADMIN_KEY = process.env.ADMIN_KEY;
 if (!ADMIN_KEY) {
-  if (gh.enabled) {
+  if (CLOUD_MODE) {
     console.error('ERREUR : la variable d\'environnement ADMIN_KEY est requise en mode hébergement cloud.');
     process.exit(1);
   }
@@ -63,14 +80,18 @@ function requireAdminKey(req, res, next) {
 app.use(express.json({ limit: '15mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 if (!gh.enabled) {
-  app.use('/photos', express.static(PHOTOS_DIR)); // mode local uniquement — en mode GitHub, les photos sont servies directement par raw.githubusercontent.com
+  app.use('/photos', express.static(PHOTOS_DIR)); // pas de GitHub configuré — en mode GitHub, les photos sont servies directement par raw.githubusercontent.com
 }
 
-// --- Cache mémoire des données (évite d'interroger GitHub à chaque page vue) ---
+// --- Cache mémoire des données (évite d'interroger Supabase/GitHub à chaque page vue) ---
 let cache = { data: null, sha: null };
 
 async function loadData() {
-  if (gh.enabled) {
+  if (DATA_MODE === 'supabase') {
+    const data = await sb.getData();
+    if (!data) throw new Error("Aucune donnée trouvée dans Supabase (table site_data vide). Lancez l'import initial — voir scripts/migrate-data-to-supabase.js.");
+    cache.data = data;
+  } else if (DATA_MODE === 'github') {
     const file = await gh.getFile(DATA_REPO_PATH);
     if (!file) throw new Error(`Fichier de données introuvable dans le dépôt GitHub (${DATA_REPO_PATH}). Importez-le une première fois — voir README.`);
     cache.sha = file.sha;
@@ -84,7 +105,9 @@ async function loadData() {
 async function saveData(incoming) {
   incoming.meta = incoming.meta || {};
   incoming.meta.derniereMaj = new Date().toISOString();
-  if (gh.enabled) {
+  if (DATA_MODE === 'supabase') {
+    await sb.putData(incoming);
+  } else if (DATA_MODE === 'github') {
     const base64 = Buffer.from(JSON.stringify(incoming, null, 2), 'utf-8').toString('base64');
     cache.sha = await gh.putFile(DATA_REPO_PATH, base64, `Mise à jour des données — ${incoming.meta.derniereMaj}`, cache.sha);
   } else {
@@ -106,7 +129,7 @@ app.get('/api/data', async (req, res) => {
 
 // --- Vérification du code admin (utilisé par l'écran de connexion admin) ---
 app.get('/api/admin/check', requireAdminKey, (req, res) => {
-  res.json({ ok: true, storage: gh.enabled ? 'github' : 'local' });
+  res.json({ ok: true, storage: DATA_MODE });
 });
 
 // --- Écriture des données (protégée) ---
@@ -190,8 +213,12 @@ function localIPs() {
 app.listen(PORT, () => {
   console.log('==================================================');
   console.log('  ELC 2027 - Serveur démarré');
-  console.log(`  Mode de stockage : ${gh.enabled ? `GitHub (${gh.GITHUB_OWNER}/${gh.GITHUB_REPO}@${gh.GITHUB_BRANCH})` : 'fichier local'}`);
-  if (gh.enabled) {
+  const storageLabel = DATA_MODE === 'supabase' ? 'Supabase (Postgres)'
+    : DATA_MODE === 'github' ? `GitHub (${gh.GITHUB_OWNER}/${gh.GITHUB_REPO}@${gh.GITHUB_BRANCH})`
+    : 'fichier local';
+  console.log(`  Mode de stockage (données) : ${storageLabel}`);
+  console.log(`  Mode de stockage (photos) : ${gh.enabled ? `GitHub (${gh.GITHUB_OWNER}/${gh.GITHUB_REPO})` : 'fichier local'}`);
+  if (CLOUD_MODE) {
     console.log(`  Port : ${PORT}`);
   } else {
     console.log(`  Vue publique (lecture seule) : http://localhost:${PORT}/`);
