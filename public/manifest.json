@@ -1,0 +1,17 @@
+{
+  "name": "ELC 2027 — East League of Cameroon",
+  "short_name": "ELC 2027",
+  "description": "Compétition esport Honor of Kings, Mobile Legends, PUBG Mobile et Free Fire — saison 2027 de la Ligue Esport Est Cameroun.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0e0e0e",
+  "theme_color": "#0e0e0e",
+  "lang": "fr",
+  "icons": [
+    { "src": "/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/img/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
