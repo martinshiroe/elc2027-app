@@ -77,7 +77,7 @@
       tiktok: { label: "TikTok", icon: "fa-brands fa-tiktok" },
       youtube: { label: "YouTube", icon: "fa-brands fa-youtube" },
       discord: { label: "Discord", icon: "fa-brands fa-discord" },
-      linkedin: { label: "LinkedIn", icon: "fa-brands fa-linkedin-in" }
+      whatsapp: { label: "WhatsApp", icon: "fa-brands fa-whatsapp" }
     };
     var socialHtml = Object.keys(socialIcons).map(function (k) {
       var url = reseaux[k] && reseaux[k].trim();
