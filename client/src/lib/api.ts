@@ -19,6 +19,7 @@ export type SiteData = {
     {
       nom: string;
       family: "MOBA" | "TPS";
+      heroImage?: string;
       bareme: Record<string, any>;
       roster?: { id: string; nom: string; photo?: string }[];
       bracket?: { equipes: { id: string; nom: string; logo?: string }[] };

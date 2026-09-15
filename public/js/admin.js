@@ -140,6 +140,9 @@
       var comp = state.data.competition[id];
       var html = '<div class="sub-card"><h4>' + esc(comp.nom) + ' — <span style="color:var(--text-dim)">' + comp.family + '</span></h4>';
 
+      html += '<div class="field-group"><label>Image hero — bannière de la discipline</label>' +
+        '<input type="text" data-path="competition.' + id + '.heroImage" placeholder="URL publique d\'une image (JPG, PNG, WebP). Laisser vide pour garder le fond par défaut."></div>';
+
       html += '<div style="font-size:11.5px;font-weight:700;color:var(--text-dim);margin:10px 0 6px">Calendrier</div>';
       comp.calendrier.forEach(function (_, i) {
         html += '<div class="field-row three">' +

@@ -121,6 +121,9 @@ export default function PageCompetition() {
               const teams = real?.bracket?.equipes?.length ?? real?.roster?.length ?? (d.type === "MOBA" ? 16 : 32);
               return (
                 <div key={id} style={{ background: "#111", border: `1px solid ${d.color === "#3b82f6" ? "rgba(59,130,246,0.18)" : "rgba(239,68,68,0.18)"}`, borderRadius: 14, overflow: "hidden" }}>
+                  {real?.heroImage && (
+                    <div style={{ height: 120, backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(17,17,17,0.9)), url("${real.heroImage}")`, backgroundSize: "cover", backgroundPosition: "center" }} />
+                  )}
                   <div style={{ padding: "24px 28px 20px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                       <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 10, color: d.color, background: d.color === "#3b82f6" ? "rgba(59,130,246,0.1)" : "rgba(239,68,68,0.1)", border: `1px solid ${d.color === "#3b82f6" ? "rgba(59,130,246,0.25)" : "rgba(239,68,68,0.25)"}`, padding: "2px 8px", borderRadius: 4, letterSpacing: "0.8px", textTransform: "uppercase" }}>{d.type}</span>

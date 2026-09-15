@@ -282,9 +282,10 @@ const GAMES = {
 
 type GameKey = keyof typeof GAMES;
 
-function DisciplinesSection() {
+function DisciplinesSection({ data }: { data: SiteData | null }) {
   const [active, setActive] = useState<GameKey>("hok");
   const game = GAMES[active];
+  const heroImage = data?.competition?.[active]?.heroImage;
 
   return (
     <section id="disciplines" style={{ background: "#0c0c0c", padding: "120px 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -314,7 +315,13 @@ function DisciplinesSection() {
             ))}
           </div>
 
-          <div style={{ background: "linear-gradient(to bottom, rgba(187,187,187,0.08), rgba(0,0,0,0))", borderRadius: 14, border: "1px solid rgba(255,255,255,0.08)", padding: "36px 40px", minHeight: 320 }}>
+          <div style={{
+            position: "relative", overflow: "hidden", borderRadius: 14, border: "1px solid rgba(255,255,255,0.08)", padding: "36px 40px", minHeight: 320,
+            background: heroImage
+              ? `linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.9)), url("${heroImage}") center/cover no-repeat`
+              : "linear-gradient(to bottom, rgba(187,187,187,0.08), rgba(0,0,0,0))",
+            transition: "background 0.25s",
+          }}>
             <div style={{ display: "inline-block", background: game.color === "#3b82f6" ? "rgba(59,130,246,0.12)" : "rgba(239,68,68,0.12)", border: `1px solid ${game.color === "#3b82f6" ? "rgba(59,130,246,0.3)" : "rgba(239,68,68,0.3)"}`, color: game.color, borderRadius: 20, padding: "4px 12px", fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 10, letterSpacing: "1px", textTransform: "uppercase", marginBottom: 20 }}>{game.type}</div>
             <h3 style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: 28, letterSpacing: "-0.8px", color: "#fff", margin: "0 0 16px" }}>{game.label}</h3>
             <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.75, margin: "0 0 32px" }}>{game.desc}</p>
@@ -385,7 +392,7 @@ export default function Home() {
       <BenefitCards />
       <FeatureSection data={data} />
       <StatsSection />
-      <DisciplinesSection />
+      <DisciplinesSection data={data} />
       <CtaSection />
     </div>
   );
