@@ -38,7 +38,7 @@
     var small = size && size < 40 ? " avatar-sm" : "";
     var style = size ? "width:" + size + "px;height:" + size + "px;font-size:" + Math.max(9, Math.round(size * 0.38)) + "px" : "";
     var img = photo
-      ? '<div class="avatar' + small + '" style="' + style + '"><img src="' + esc(photo) + '" alt="' + esc(name || "") + '"></div>'
+      ? '<div class="avatar' + small + '" style="' + style + '"><img src="' + esc(photo) + '" alt="' + esc(name || "") + '" loading="lazy" decoding="async"></div>'
       : '<div class="avatar' + small + '" style="' + style + '">' + esc(initials(name)) + '</div>';
     var medal = medalSvg(rank);
     return medal ? '<span class="avatar-wrap">' + img + medal + '</span>' : img;

@@ -16,7 +16,7 @@ function DistinctionCard({ d, laureat }: { d: typeof DISTINCTIONS[0]; laureat: a
         <div style={{ fontFamily: "'Roboto Mono:Regular','Roboto Mono',monospace", fontSize: 10, letterSpacing: "1px", textTransform: "uppercase", color: d.text, marginBottom: 20 }}>{d.title}</div>
         <div style={{ width: 72, height: 72, borderRadius: "50%", background: d.gradient, border: `2px solid ${d.border}`, margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
           {laureat?.photo ? (
-            <img src={laureat.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={laureat.photo} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           ) : (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
               <circle cx="12" cy="8" r="4" stroke={d.border} strokeWidth="1.5" strokeOpacity="0.5"/>

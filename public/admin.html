@@ -37,16 +37,19 @@
 <div class="admin-wrap">
 
   <div class="admin-tabs" id="railTabs">
-    <button class="tab-btn active" data-panel="a-meta">Organisateur &amp; saison</button>
-    <button class="tab-btn" data-panel="a-v1">Visuel 1 · 4 Titres</button>
-    <button class="tab-btn" data-panel="a-v2">Visuel 2 · Calendrier</button>
-    <button class="tab-btn" data-panel="a-v3">Visuel 3 · PUBG &amp; FF</button>
-    <button class="tab-btn" data-panel="a-v4">Visuel 4 · Bracket</button>
-    <button class="tab-btn" data-panel="a-comp">Compétition &amp; Points</button>
-    <button class="tab-btn" data-panel="a-manches">Manches &amp; Résultats</button>
-    <button class="tab-btn" data-panel="a-joueurs">Joueurs</button>
-    <button class="tab-btn" data-panel="a-pantheon">Panthéon</button>
+    <div class="admin-tabs-label">Sections</div>
+    <button class="tab-btn active" data-panel="a-meta"><span class="tab-dot"></span>Organisateur &amp; saison</button>
+    <button class="tab-btn" data-panel="a-v1"><span class="tab-dot"></span>Visuel 1 · 4 Titres</button>
+    <button class="tab-btn" data-panel="a-v2"><span class="tab-dot"></span>Visuel 2 · Calendrier</button>
+    <button class="tab-btn" data-panel="a-v3"><span class="tab-dot"></span>Visuel 3 · PUBG &amp; FF</button>
+    <button class="tab-btn" data-panel="a-v4"><span class="tab-dot"></span>Visuel 4 · Bracket</button>
+    <button class="tab-btn" data-panel="a-comp"><span class="tab-dot"></span>Compétition &amp; Points</button>
+    <button class="tab-btn" data-panel="a-manches"><span class="tab-dot"></span>Manches &amp; Résultats</button>
+    <button class="tab-btn" data-panel="a-joueurs"><span class="tab-dot"></span>Joueurs</button>
+    <button class="tab-btn" data-panel="a-pantheon"><span class="tab-dot"></span>Panthéon</button>
   </div>
+
+  <div class="admin-content">
 
   <div class="admin-panel active" id="a-meta">
     <h2 class="admin-h">Organisateur &amp; saison</h2>
@@ -57,7 +60,7 @@
     </div>
     <div class="field-group"><label>Badge en-tête</label><input type="text" data-path="meta.badgeHaut"></div>
 
-    <div class="sub-card"><h4>Inscription &amp; contact</h4>
+    <div class="sub-card"><h3>Inscription &amp; contact</h3>
       <div class="field-group"><label>Lien du formulaire d'inscription (Google Form)</label><input type="text" data-path="meta.googleFormUrl" placeholder="https://forms.gle/..."></div>
       <div class="field-row">
         <div class="field-group"><label>Téléphone</label><input type="text" data-path="meta.contact.telephone" placeholder="+237 6XX XX XX XX"></div>
@@ -65,11 +68,11 @@
       </div>
     </div>
 
-    <div class="sub-card"><h4>Page d'accueil</h4>
+    <div class="sub-card"><h3>Page d'accueil</h3>
       <div class="field-group"><label>Image de fond — bannière d'accueil</label><input type="text" data-path="meta.heroImage" placeholder="URL publique d'une image (JPG, PNG, WebP). Laisser vide pour garder le fond par défaut."></div>
     </div>
 
-    <div class="sub-card"><h4>Réseaux sociaux (pied de page)</h4>
+    <div class="sub-card"><h3>Réseaux sociaux (pied de page)</h3>
       <div class="field-row three">
         <div class="field-group"><label>Facebook</label><input type="text" data-path="meta.reseaux.facebook" placeholder="Laisser vide si inexistant"></div>
         <div class="field-group"><label>Instagram</label><input type="text" data-path="meta.reseaux.instagram" placeholder="Laisser vide si inexistant"></div>
@@ -82,7 +85,7 @@
       </div>
     </div>
 
-    <div class="sub-card"><h4>Documents légaux (pied de page)</h4>
+    <div class="sub-card"><h3>Documents légaux (pied de page)</h3>
       <p class="admin-desc" style="margin-bottom:10px">Tapez le texte directement ci-dessous : il s'affiche dans une fenêtre sur le site, sans avoir besoin d'une page séparée. Le champ « lien » reste disponible si vous préférez pointer vers un document déjà hébergé ailleurs (PDF, Google Doc...) — dans ce cas laissez le texte vide.</p>
       <div class="field-group"><label>Texte CGU / règlement de participation</label><textarea data-path="meta.liens.cguTexte" placeholder="Laisser vide si vous préférez utiliser le lien ci-dessous"></textarea></div>
       <div class="field-group"><label>Lien CGU / règlement (si hébergé ailleurs)</label><input type="text" data-path="meta.liens.cgu" placeholder="Laisser vide si non publié"></div>
@@ -118,7 +121,7 @@
       <div class="field-group"><label>Plateformes</label><input type="text" data-path="visual2.plateformes"></div>
       <div class="field-group"><label>Diffusion</label><input type="text" data-path="visual2.diffusion"></div>
     </div>
-    <div class="sub-card"><h4>Structure</h4>
+    <div class="sub-card"><h3>Structure</h3>
       <div class="field-row three">
         <div class="field-group"><label>Équipes MOBA</label><input type="text" data-path="visual2.structure.equipesMoba"></div>
         <div class="field-group"><label>Joueurs TPS</label><input type="text" data-path="visual2.structure.joueursTps"></div>
@@ -134,14 +137,14 @@
       <div class="field-group"><label>Sous-titre</label><input type="text" data-path="visual3.sousTitre"></div>
       <div class="field-group"><label>Badges (séparés par ·)</label><input type="text" data-badges="visual3"></div>
     </div>
-    <div class="sub-card"><h4>PUBG Mobile</h4>
+    <div class="sub-card"><h3>PUBG Mobile</h3>
       <div class="field-row three">
         <div class="field-group"><label>Badge lancement</label><input type="text" data-path="visual3.pubg.lancementBadge"></div>
         <div class="field-group"><label>Places joueurs</label><input type="text" data-path="visual3.pubg.placesJoueurs"></div>
         <div class="field-group"><label>Note</label><input type="text" data-path="visual3.pubg.note"></div>
       </div>
     </div>
-    <div class="sub-card"><h4>Free Fire</h4>
+    <div class="sub-card"><h3>Free Fire</h3>
       <div class="field-row three">
         <div class="field-group"><label>Badge lancement</label><input type="text" data-path="visual3.ff.lancementBadge"></div>
         <div class="field-group"><label>Places joueurs</label><input type="text" data-path="visual3.ff.placesJoueurs"></div>
@@ -167,13 +170,13 @@
       <div class="field-group"><label>Champion / vainqueur</label><input type="text" data-path="visual4.champion"></div>
       <div class="field-group"><label>Badges (séparés par ·)</label><input type="text" data-badges="visual4"></div>
     </div>
-    <div class="sub-card"><h4>Équipes — Série de finale (16 entrées)</h4>
+    <div class="sub-card"><h3>Équipes — Série de finale (16 entrées)</h3>
       <div class="bracket-admin-grid" id="v4-equipes-fields"></div>
     </div>
-    <div class="sub-card"><h4>Quarts de finale (4 vainqueurs)</h4>
+    <div class="sub-card"><h3>Quarts de finale (4 vainqueurs)</h3>
       <div class="bracket-admin-grid" id="v4-qf-fields"></div>
     </div>
-    <div class="sub-card"><h4>Demi-finales (2 vainqueurs)</h4>
+    <div class="sub-card"><h3>Demi-finales (2 vainqueurs)</h3>
       <div class="bracket-admin-grid" id="v4-sf-fields"></div>
     </div>
   </div>
@@ -228,6 +231,8 @@
       <button class="btn secondary" id="reloadBtn">Recharger</button>
       <button class="btn" id="saveBtn">Enregistrer</button>
     </div>
+  </div>
+
   </div>
 </div>
 </div>

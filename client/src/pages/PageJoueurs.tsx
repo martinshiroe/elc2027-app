@@ -82,7 +82,7 @@ export default function PageJoueurs() {
               {filtered.map((j: any, i: number) => (
                 <div key={j.id || i} style={{ background: "#111", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "20px 18px", textAlign: "center" }}>
                   <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#161616", border: "1px solid rgba(255,255,255,0.08)", margin: "0 auto 12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                    {j.photo ? <img src={j.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 18, color: "rgba(255,255,255,0.3)" }}>{(j.pseudo || j.nom || "?")[0]}</span>}
+                    {j.photo ? <img src={j.photo} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 18, color: "rgba(255,255,255,0.3)" }}>{(j.pseudo || j.nom || "?")[0]}</span>}
                   </div>
                   <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#fff" }}>{j.pseudo || j.nom}</div>
                   {j.equipe && <div style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{j.equipe}</div>}
