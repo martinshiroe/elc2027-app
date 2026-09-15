@@ -199,6 +199,16 @@ app.delete('/api/photo/:entityId', requireAdminKey, async (req, res) => {
   }
 });
 
+// --- Repli SPA (vitrine multi-pages) ---
+// Les routes client (/, /competition, /classements, /joueurs, /pantheon) n'ont
+// pas de fichier physique : on sert index.html et React Router prend le relais.
+// /admin.html, /app.html et les fichiers statiques (css/js/img, avec extension)
+// sont déjà servis par express.static ci-dessus et ne passent jamais ici.
+app.get(/^\/(?!api\/|photos\/).*/, (req, res, next) => {
+  if (path.extname(req.path)) return next();
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 function localIPs() {
   const ifaces = os.networkInterfaces();
   const out = [];
