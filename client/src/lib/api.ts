@@ -11,6 +11,8 @@ export type SiteData = {
     reseaux?: Record<string, string>;
     liens?: { statutsTexte?: string };
     derniereMaj?: string;
+    googleFormUrl?: string;
+    heroImage?: string;
   };
   competition: Record<
     string,

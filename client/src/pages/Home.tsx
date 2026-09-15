@@ -48,10 +48,16 @@ function IconBarChart() {
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-function Hero({ onSection }: { onSection: (id: string) => void }) {
+function Hero({ onSection, heroImage }: { onSection: (id: string) => void; heroImage?: string }) {
   return (
     <section id="hero" style={{ position: "relative", overflow: "hidden", background: "#0e0e0e", paddingTop: 120, paddingBottom: 80 }}>
-      <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(166.77deg, rgba(14,14,14,0) 85%, rgba(14,14,14,0.98) 100%), url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 900' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(72 90 -72 90 720 450)'><stop stop-color='rgba(20,40,40,0.9)' offset='0'/><stop stop-color='rgba(14,14,14,0.2)' offset='0.14'/><stop stop-color='rgba(14,14,14,0)' offset='0.48'/></radialGradient></defs></svg>"), linear-gradient(90deg, #0e0e0e 0%, #0e0e0e 100%)`, pointerEvents: "none" }} />
+      {heroImage ? (
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url("${heroImage}")`, backgroundSize: "cover", backgroundPosition: "center", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(14,14,14,0.65) 0%, rgba(14,14,14,0.85) 60%, rgba(14,14,14,0.98) 100%)" }} />
+        </div>
+      ) : (
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(166.77deg, rgba(14,14,14,0) 85%, rgba(14,14,14,0.98) 100%), url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 900' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(72 90 -72 90 720 450)'><stop stop-color='rgba(20,40,40,0.9)' offset='0'/><stop stop-color='rgba(14,14,14,0.2)' offset='0.14'/><stop stop-color='rgba(14,14,14,0)' offset='0.48'/></radialGradient></defs></svg>"), linear-gradient(90deg, #0e0e0e 0%, #0e0e0e 100%)`, pointerEvents: "none" }} />
+      )}
       <div style={{ position: "absolute", top: -200, left: "50%", transform: "translateX(-50%)", width: 800, height: 500, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(20,184,166,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 28px", position: "relative", textAlign: "center" }}>
@@ -375,7 +381,7 @@ export default function Home() {
 
   return (
     <div style={{ background: "#0e0e0e" }}>
-      <Hero onSection={scrollTo} />
+      <Hero onSection={scrollTo} heroImage={data?.meta?.heroImage} />
       <BenefitCards />
       <FeatureSection data={data} />
       <StatsSection />

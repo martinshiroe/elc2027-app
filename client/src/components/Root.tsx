@@ -9,7 +9,7 @@ import LegalModal from "./LegalModal";
 export async function openForm() {
   try {
     const d = await loadData();
-    const url = (d as any).meta?.liens?.formulaire || "";
+    const url = (d as any).meta?.googleFormUrl || "";
     if (url) { window.open(url, "_blank", "noopener,noreferrer"); return; }
   } catch {
     // ignore — on retombe sur le message ci-dessous
