@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { openForm } from "../components/Root";
 import { loadData, SiteData } from "../lib/api";
+import NumberTicker from "../components/NumberTicker";
 
 // ─── Shared Icons ─────────────────────────────────────────────────────────────
 
@@ -66,11 +67,11 @@ function Hero({ onSection, heroImage }: { onSection: (id: string) => void; heroI
           <span style={{ fontFamily: "'Roboto Mono:Regular', 'Roboto Mono', monospace", fontSize: 11, color: "#14b8a6", letterSpacing: "1.2px", textTransform: "uppercase" }}>East League of Cameroon · Saison 2027</span>
         </div>
 
-        <h1 style={{ fontFamily: "'Inter:Medium', 'Inter', sans-serif", fontWeight: 500, fontSize: "clamp(44px, 7.5vw, 101px)", lineHeight: 1.01, letterSpacing: "clamp(-2px, -0.04em, -4px)", color: "#fff", margin: "0 auto 24px", maxWidth: 900 }}>
+        <h1 style={{ fontFamily: "'Manrope:Medium', 'Manrope', sans-serif", fontWeight: 500, fontSize: "clamp(44px, 7.5vw, 101px)", lineHeight: 1.01, letterSpacing: "clamp(-2px, -0.04em, -4px)", color: "#fff", margin: "0 auto 24px", maxWidth: 900 }}>
           Compétis avec les meilleurs — sans compromis
         </h1>
 
-        <p style={{ fontFamily: "'Inter:Regular', 'Inter', sans-serif", fontSize: 18, color: "rgba(255,255,255,0.6)", lineHeight: 1.9, maxWidth: 640, margin: "0 auto 40px" }}>
+        <p style={{ fontFamily: "'Manrope:Regular', 'Manrope', sans-serif", fontSize: 18, color: "rgba(255,255,255,0.6)", lineHeight: 1.9, maxWidth: 640, margin: "0 auto 40px" }}>
           Honor of Kings, Mobile Legends, PUBG Mobile, Free Fire —{" "}
           quatre disciplines, des dizaines d'équipes, une saison qui décide tout.
         </p>
@@ -78,7 +79,7 @@ function Hero({ onSection, heroImage }: { onSection: (id: string) => void; heroI
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <button
             onClick={openForm}
-            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "14px 28px", borderRadius: 6, fontFamily: "'Inter:Medium', sans-serif", fontSize: 15, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
+            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "14px 28px", borderRadius: 6, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 15, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
@@ -86,7 +87,7 @@ function Hero({ onSection, heroImage }: { onSection: (id: string) => void; heroI
           </button>
           <button
             onClick={() => onSection("competition")}
-            style={{ background: "rgba(255,255,255,0.06)", color: "#fff", padding: "14px 28px", borderRadius: 6, fontFamily: "'Inter:Medium', sans-serif", fontSize: 15, fontWeight: 500, border: "1px solid rgba(255,255,255,0.14)", cursor: "pointer", transition: "background 0.15s" }}
+            style={{ background: "rgba(255,255,255,0.06)", color: "#fff", padding: "14px 28px", borderRadius: 6, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 15, fontWeight: 500, border: "1px solid rgba(255,255,255,0.14)", cursor: "pointer", transition: "background 0.15s" }}
             onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
           >
@@ -108,15 +109,15 @@ function Hero({ onSection, heroImage }: { onSection: (id: string) => void; heroI
               <div style={{ gridColumn: "1 / -1", background: "#0e1528", border: "1px solid rgba(20,184,166,0.2)", borderRadius: 10, padding: "16px 20px", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
                 <span style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 10, color: "#14b8a6", letterSpacing: "1px", textTransform: "uppercase" }}>Exemple de match · MOBA</span>
                 <div style={{ flex: 1, display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20 }}>
-                  <span style={{ fontFamily: "'Inter:Medium', sans-serif", fontSize: 16, fontWeight: 500 }}>Équipe A</span>
+                  <span style={{ fontFamily: "'Manrope:Medium', sans-serif", fontSize: 16, fontWeight: 500 }}>Équipe A</span>
                   <span style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 18, color: "#14b8a6", fontWeight: 700 }}>VS</span>
-                  <span style={{ fontFamily: "'Inter:Medium', sans-serif", fontSize: 16, fontWeight: 500 }}>Équipe B</span>
+                  <span style={{ fontFamily: "'Manrope:Medium', sans-serif", fontSize: 16, fontWeight: 500 }}>Équipe B</span>
                 </div>
               </div>
               {[{ val: "4", lbl: "Disciplines officielles", color: "#14b8a6" }, { val: "2", lbl: "Formats compétitifs", color: "#22c55e" }, { val: "16", lbl: "Équipes par MOBA", color: "#3b82f6" }].map((s) => (
                 <div key={s.lbl} style={{ background: "#0e1528", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, padding: 16 }}>
-                  <div style={{ fontFamily: "'Inter:Medium', sans-serif", fontSize: 28, fontWeight: 500, color: s.color, lineHeight: 1 }}>{s.val}</div>
-                  <div style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 6 }}>{s.lbl}</div>
+                  <div style={{ fontFamily: "'Manrope:Medium', sans-serif", fontSize: 28, fontWeight: 500, color: s.color, lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 6 }}>{s.lbl}</div>
                 </div>
               ))}
             </div>
@@ -147,10 +148,10 @@ function BenefitCards() {
             <div style={{ position: "relative", height: 26 }}>
               <div style={{ position: "absolute", left: 0, top: 2, width: 21 }}>{c.icon}</div>
               <div style={{ position: "absolute", left: 32, right: 0, top: 0, bottom: 0, display: "flex", alignItems: "center" }}>
-                <span style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: 18, color: "#fff", letterSpacing: "-0.36px", lineHeight: "26px" }}>{c.title}</span>
+                <span style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: 18, color: "#fff", letterSpacing: "-0.36px", lineHeight: "26px" }}>{c.title}</span>
               </div>
             </div>
-            <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: "26px", margin: 0 }}>{c.text}</p>
+            <p style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: "26px", margin: 0 }}>{c.text}</p>
           </div>
         ))}
       </div>
@@ -181,24 +182,24 @@ function FeatureSection({ data }: { data: SiteData | null }) {
     <section id="competition" style={{ position: "relative", overflow: "hidden", background: "#0e0e0e", padding: "120px 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="feat-grid">
         <div>
-          <div style={{ fontFamily: "'Inter:Medium', sans-serif", fontSize: 13, color: "#14b8a6", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 20 }}>Format compétitif</div>
-          <h2 style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(32px, 4.5vw, 56px)", lineHeight: 1.08, letterSpacing: "-1.8px", color: "#fff", margin: "0 0 24px" }}>
+          <div style={{ fontFamily: "'Manrope:Medium', sans-serif", fontSize: 13, color: "#14b8a6", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 20 }}>Format compétitif</div>
+          <h2 style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(32px, 4.5vw, 56px)", lineHeight: 1.08, letterSpacing: "-1.8px", color: "#fff", margin: "0 0 24px" }}>
             Une compétition<br />structurée pour tous
           </h2>
-          <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.55)", lineHeight: 1.8, margin: "0 0 36px" }}>
+          <p style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.55)", lineHeight: 1.8, margin: "0 0 36px" }}>
             Du barème à la remise des distinctions, chaque règle est transparente et appliquée sans exception — pour que le meilleur gagne, toujours.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
             {features.map((f) => (
               <div key={f} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
                 <span style={{ flexShrink: 0, marginTop: 3 }}><IconCheck /></span>
-                <span style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>{f}</span>
+                <span style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>{f}</span>
               </div>
             ))}
           </div>
           <button
             onClick={openForm}
-            style={{ display: "inline-block", marginTop: 40, background: "#14b8a6", color: "#0e0e0e", padding: "12px 24px", borderRadius: 6, fontFamily: "'Inter:Medium', sans-serif", fontSize: 14, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
+            style={{ display: "inline-block", marginTop: 40, background: "#14b8a6", color: "#0e0e0e", padding: "12px 24px", borderRadius: 6, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 14, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
@@ -209,25 +210,25 @@ function FeatureSection({ data }: { data: SiteData | null }) {
         <div style={{ background: "linear-gradient(to bottom, rgba(187,187,187,0.1), rgba(0,0,0,0))", borderRadius: 14, border: "1px solid rgba(255,255,255,0.08)", padding: 24, overflow: "hidden" }}>
           <div style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 10, color: "#14b8a6", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 16 }}>Barèmes officiels · Saison 2027</div>
           <div style={{ marginBottom: 20 }}>
-            <div style={{ background: "rgba(59,130,246,0.12)", border: "1px solid rgba(59,130,246,0.25)", borderRadius: 6, padding: "8px 12px", marginBottom: 10, fontFamily: "'Inter:Medium', sans-serif", fontSize: 12, color: "#3b82f6" }}>MOBA — Honor of Kings · Mobile Legends</div>
+            <div style={{ background: "rgba(59,130,246,0.12)", border: "1px solid rgba(59,130,246,0.25)", borderRadius: 6, padding: "8px 12px", marginBottom: 10, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 12, color: "#3b82f6" }}>MOBA — Honor of Kings · Mobile Legends</div>
             {[["Victoire", moba?.victoire], ["Match nul", moba?.nul], ["Défaite", moba?.defaite]].map(([r, p]) => (
               <div key={r as string} style={{ display: "flex", justifyContent: "space-between", padding: "7px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                <span style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)" }}>{r}</span>
+                <span style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)" }}>{r}</span>
                 <span style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 13, color: "#14b8a6", fontWeight: 700 }}>{p != null ? `${p} pt${p === 1 ? "" : "s"}` : "—"}</span>
               </div>
             ))}
           </div>
           <div>
-            <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.25)", borderRadius: 6, padding: "8px 12px", marginBottom: 10, fontFamily: "'Inter:Medium', sans-serif", fontSize: 12, color: "#ef4444" }}>TPS Battle Royale — PUBG Mobile · Free Fire</div>
+            <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.25)", borderRadius: 6, padding: "8px 12px", marginBottom: 10, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 12, color: "#ef4444" }}>TPS Battle Royale — PUBG Mobile · Free Fire</div>
             {(tps?.places || []).slice(0, 3).map((pts: number, i: number) => (
               <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "7px 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                <span style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)" }}>{i === 0 ? "1re place" : `${i + 1}e place`}</span>
+                <span style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)" }}>{i === 0 ? "1re place" : `${i + 1}e place`}</span>
                 <span style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 13, color: "#14b8a6", fontWeight: 700 }}>{pts} pts</span>
               </div>
             ))}
             {tps?.elimination != null && (
               <div style={{ display: "flex", justifyContent: "space-between", padding: "7px 0" }}>
-                <span style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)" }}>Chaque élimination</span>
+                <span style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)" }}>Chaque élimination</span>
                 <span style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 13, color: "#14b8a6", fontWeight: 700 }}>+{tps.elimination} pt</span>
               </div>
             )}
@@ -243,26 +244,26 @@ function FeatureSection({ data }: { data: SiteData | null }) {
 
 function StatsSection() {
   const stats = [
-    { val: "4",  label: "Disciplines officielles",     color: "#14b8a6" },
-    { val: "2",  label: "Formats compétitifs",         color: "#22c55e" },
-    { val: "16", label: "Équipes par discipline MOBA", color: "#3b82f6" },
-    { val: "32", label: "Joueurs par discipline TPS",  color: "#f59e0b" },
-    { val: "2027", label: "Saison en cours",           color: "#a78bfa" },
+    { val: 4,  label: "Disciplines officielles",     color: "#14b8a6" },
+    { val: 2,  label: "Formats compétitifs",         color: "#22c55e" },
+    { val: 16, label: "Équipes par discipline MOBA", color: "#3b82f6" },
+    { val: 32, label: "Joueurs par discipline TPS",  color: "#f59e0b" },
+    { val: 2027, label: "Saison en cours",           color: "#a78bfa" },
   ];
 
   return (
     <section style={{ background: "#0f0f0f", padding: "100px 28px", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ marginBottom: 64 }}>
-          <h2 style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(28px,4vw,48px)", letterSpacing: "-1.5px", color: "#fff", margin: "0 0 16px", maxWidth: 600 }}>Une compétition qui prend de l'ampleur</h2>
-          <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>Chaque saison, l'ELC rassemble plus de joueurs, plus d'équipes, et des rencontres toujours plus serrées.</p>
+          <h2 style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(28px,4vw,48px)", letterSpacing: "-1.5px", color: "#fff", margin: "0 0 16px", maxWidth: 600 }}>Une compétition qui prend de l'ampleur</h2>
+          <p style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>Chaque saison, l'ELC rassemble plus de joueurs, plus d'équipes, et des rencontres toujours plus serrées.</p>
         </div>
         <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
           {stats.map((s) => (
             <div key={s.val} style={{ flex: "1 1 200px", minWidth: 180, background: "#151515", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: 24, position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 80, background: `linear-gradient(to bottom, ${s.color}22, transparent)`, pointerEvents: "none" }} />
-              <div style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: 42, color: s.color, lineHeight: 1, marginBottom: 10 }}>{s.val}</div>
-              <div style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.5)" }}>{s.label}</div>
+              <div style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: 42, color: s.color, lineHeight: 1, marginBottom: 10 }}><NumberTicker value={s.val} /></div>
+              <div style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.5)" }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -291,11 +292,11 @@ function DisciplinesSection({ data }: { data: SiteData | null }) {
     <section id="disciplines" style={{ background: "#0c0c0c", padding: "120px 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ marginBottom: 60 }}>
-          <div style={{ fontFamily: "'Inter:Medium', sans-serif", fontSize: 13, color: "#14b8a6", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 16 }}>Disciplines officielles</div>
-          <h2 style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(30px, 4.5vw, 56px)", letterSpacing: "-1.8px", color: "#fff", margin: "0 0 20px" }}>
+          <div style={{ fontFamily: "'Manrope:Medium', sans-serif", fontSize: 13, color: "#14b8a6", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 16 }}>Disciplines officielles</div>
+          <h2 style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(30px, 4.5vw, 56px)", letterSpacing: "-1.8px", color: "#fff", margin: "0 0 20px" }}>
             Une plateforme conçue<br />pour chaque style de jeu
           </h2>
-          <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>MOBA ou Battle Royale — deux formats, quatre jeux, un seul tournoi.</p>
+          <p style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 520, lineHeight: 1.7, margin: 0 }}>MOBA ou Battle Royale — deux formats, quatre jeux, un seul tournoi.</p>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "360px 1fr", gap: 40, alignItems: "start" }} className="disc-grid">
@@ -308,7 +309,7 @@ function DisciplinesSection({ data }: { data: SiteData | null }) {
               >
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: active === key ? g.color : "rgba(255,255,255,0.15)", flexShrink: 0, transition: "background 0.15s" }} />
                 <span>
-                  <div style={{ fontFamily: "'Inter:Medium', sans-serif", fontSize: 15, color: active === key ? "#fff" : "rgba(255,255,255,0.5)", marginBottom: 2 }}>{g.label}</div>
+                  <div style={{ fontFamily: "'Manrope:Medium', sans-serif", fontSize: 15, color: active === key ? "#fff" : "rgba(255,255,255,0.5)", marginBottom: 2 }}>{g.label}</div>
                   <div style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 10, color: g.color, letterSpacing: "0.8px", textTransform: "uppercase", opacity: active === key ? 1 : 0.5 }}>{g.type}</div>
                 </span>
               </button>
@@ -323,13 +324,13 @@ function DisciplinesSection({ data }: { data: SiteData | null }) {
             transition: "background 0.25s",
           }}>
             <div style={{ display: "inline-block", background: game.color === "#3b82f6" ? "rgba(59,130,246,0.12)" : "rgba(239,68,68,0.12)", border: `1px solid ${game.color === "#3b82f6" ? "rgba(59,130,246,0.3)" : "rgba(239,68,68,0.3)"}`, color: game.color, borderRadius: 20, padding: "4px 12px", fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 10, letterSpacing: "1px", textTransform: "uppercase", marginBottom: 20 }}>{game.type}</div>
-            <h3 style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: 28, letterSpacing: "-0.8px", color: "#fff", margin: "0 0 16px" }}>{game.label}</h3>
-            <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.75, margin: "0 0 32px" }}>{game.desc}</p>
+            <h3 style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: 28, letterSpacing: "-0.8px", color: "#fff", margin: "0 0 16px" }}>{game.label}</h3>
+            <p style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.75, margin: "0 0 32px" }}>{game.desc}</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {game.features.map((f) => (
                 <div key={f} style={{ display: "flex", gap: 12, alignItems: "center" }}>
                   <IconCheck />
-                  <span style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{f}</span>
+                  <span style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{f}</span>
                 </div>
               ))}
             </div>
@@ -352,15 +353,15 @@ function CtaSection() {
             Inscriptions bientôt disponibles · Saison 2027
           </span>
         </div>
-        <h2 style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(34px, 5vw, 64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px" }}>
+        <h2 style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: "clamp(34px, 5vw, 64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px" }}>
           Rejoins l'ELC 2027<br />gratuitement
         </h2>
-        <p style={{ fontFamily: "'Inter:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 auto 40px", maxWidth: 500 }}>
+        <p style={{ fontFamily: "'Manrope:Regular', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 auto 40px", maxWidth: 500 }}>
           Crée ton profil, choisis ta discipline et affronte les meilleurs joueurs de la scène camerounaise.
         </p>
         <button
           onClick={openForm}
-          style={{ background: "#22c55e", color: "#06210f", padding: "14px 32px", borderRadius: 6, fontFamily: "'Inter:Medium', sans-serif", fontSize: 15, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
+          style={{ background: "#22c55e", color: "#06210f", padding: "14px 32px", borderRadius: 6, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 15, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >

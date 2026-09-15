@@ -48,7 +48,7 @@ function Nav() {
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 28px", height: 60, display: "flex", alignItems: "center", gap: 8 }}>
         <button onClick={() => navigate("/")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", gap: 8, marginRight: 16 }}>
           <img src="/img/logo-elc-wordmark.png" alt="ELC" style={{ height: 22, width: "auto", flexShrink: 0 }} />
-          <span style={{ fontFamily: "'Inter:Medium', sans-serif", fontWeight: 500, fontSize: 15, color: "#14b8a6", letterSpacing: "-0.2px", whiteSpace: "nowrap" }}>2027</span>
+          <span style={{ fontFamily: "'Manrope:Medium', sans-serif", fontWeight: 500, fontSize: 15, color: "#14b8a6", letterSpacing: "-0.2px", whiteSpace: "nowrap" }}>2027</span>
         </button>
 
         <div style={{ display: "flex", gap: 2, flex: 1, overflowX: "auto" }}>
@@ -56,7 +56,7 @@ function Nav() {
             <NavLink key={l.to} to={l.to}
               style={({ isActive }) => ({
                 padding: "6px 14px", borderRadius: 6,
-                fontFamily: "'Inter:Regular', sans-serif", fontSize: 14,
+                fontFamily: "'Manrope:Regular', sans-serif", fontSize: 14,
                 color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
                 background: isActive ? "rgba(255,255,255,0.07)" : "transparent",
                 textDecoration: "none", whiteSpace: "nowrap",
@@ -70,7 +70,7 @@ function Nav() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: 8, flexShrink: 0 }}>
           <button onClick={openForm}
-            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "7px 18px", borderRadius: 6, fontFamily: "'Inter:Medium', sans-serif", fontSize: 13, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
+            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "7px 18px", borderRadius: 6, fontFamily: "'Manrope:Medium', sans-serif", fontSize: 13, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
@@ -107,9 +107,9 @@ function Footer({ onOpenLegal }: { onOpenLegal: () => void }) {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
               <img src="/img/logo-league.png" alt="ELC" style={{ width: 26, height: 26, borderRadius: "50%", objectFit: "cover", background: "#fff" }} />
-              <span style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#fff" }}>ELC <span style={{ color: "#14b8a6" }}>2027</span></span>
+              <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#fff" }}>ELC <span style={{ color: "#14b8a6" }}>2027</span></span>
             </div>
-            <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 12.5, color: "rgba(255,255,255,0.38)", lineHeight: 1.7, margin: "0 0 22px" }}>Ligue Esport Est Cameroun — la compétition esport qui fait vibrer le Cameroun.</p>
+            <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 12.5, color: "rgba(255,255,255,0.38)", lineHeight: 1.7, margin: "0 0 22px" }}>Ligue Esport Est Cameroun — la compétition esport qui fait vibrer le Cameroun.</p>
             {activeSocials.length > 0 && (
               <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
                 {activeSocials.map(({ icon, label, key }) => (
@@ -124,11 +124,11 @@ function Footer({ onOpenLegal }: { onOpenLegal: () => void }) {
           </div>
           {cols.map((col) => (
             <div key={col.title}>
-              <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 12, color: "#fff", marginBottom: 14 }}>{col.title}</div>
+              <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 12, color: "#fff", marginBottom: 14 }}>{col.title}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 {col.links.map((l) => (
                   <NavLink key={l.label} to={l.to}
-                    style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none", transition: "color 0.15s" }}
+                    style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none", transition: "color 0.15s" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.85)")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.38)")}
                   >{l.label}</NavLink>
@@ -137,20 +137,20 @@ function Footer({ onOpenLegal }: { onOpenLegal: () => void }) {
             </div>
           ))}
           <div>
-            <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 12, color: "#fff", marginBottom: 14 }}>Contact</div>
+            <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 12, color: "#fff", marginBottom: 14 }}>Contact</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {contact.email && (
-                <a href={`mailto:${contact.email}`} style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none" }}>{contact.email}</a>
+                <a href={`mailto:${contact.email}`} style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none" }}>{contact.email}</a>
               )}
               {contact.telephone && (
-                <a href={`tel:${contact.telephone.replace(/\s/g, "")}`} style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none" }}>{contact.telephone}</a>
+                <a href={`tel:${contact.telephone.replace(/\s/g, "")}`} style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)", textDecoration: "none" }}>{contact.telephone}</a>
               )}
-              <button onClick={onOpenLegal} style={{ background: "none", border: "none", padding: 0, textAlign: "left", cursor: "pointer", fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)" }}>Mentions légales</button>
+              <button onClick={onOpenLegal} style={{ background: "none", border: "none", padding: 0, textAlign: "left", cursor: "pointer", fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.38)" }}>Mentions légales</button>
             </div>
           </div>
         </div>
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 22, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-          <span style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 12, color: "rgba(255,255,255,0.28)" }}>© 2027 Ligue Esport Est Cameroun · Tous droits réservés</span>
+          <span style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 12, color: "rgba(255,255,255,0.28)" }}>© 2027 Ligue Esport Est Cameroun · Tous droits réservés</span>
         </div>
       </div>
       <style>{`

@@ -50,10 +50,10 @@ export default function PageCompetition() {
           <div style={{ fontFamily: "'Roboto Mono:Regular','Roboto Mono',monospace", fontSize: 11, color: "#14b8a6", letterSpacing: "1.2px", textTransform: "uppercase", marginBottom: 16 }}>
             Saison 2027 · Format officiel
           </div>
-          <h1 style={{ fontFamily: "'Inter:Medium','Inter',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px", lineHeight: 1.05 }}>
+          <h1 style={{ fontFamily: "'Manrope:Medium','Manrope',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px", lineHeight: 1.05 }}>
             Compétition
           </h1>
-          <p style={{ fontFamily: "'Inter:Regular','Inter',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 560, lineHeight: 1.75, margin: 0 }}>
+          <p style={{ fontFamily: "'Manrope:Regular','Manrope',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 560, lineHeight: 1.75, margin: 0 }}>
             Calendrier, barèmes et format pour chaque discipline de la saison 2027 de la Ligue Esport Est Cameroun.
           </p>
         </div>
@@ -62,19 +62,19 @@ export default function PageCompetition() {
       {/* ── Barèmes (données réelles) ── */}
       <section style={{ padding: "80px 28px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Inter:Medium',sans-serif", fontWeight: 500, fontSize: 26, letterSpacing: "-0.6px", color: "#fff", margin: "0 0 8px" }}>Barèmes officiels</h2>
-          <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: "0 0 40px" }}>Points attribués selon le format de la discipline.</p>
+          <h2 style={{ fontFamily: "'Manrope:Medium',sans-serif", fontWeight: 500, fontSize: 26, letterSpacing: "-0.6px", color: "#fff", margin: "0 0 8px" }}>Barèmes officiels</h2>
+          <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: "0 0 40px" }}>Points attribués selon le format de la discipline.</p>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="bareme-grid">
             <div style={{ background: "#111", border: "1px solid rgba(59,130,246,0.2)", borderRadius: 14, overflow: "hidden" }}>
               <div style={{ background: "rgba(59,130,246,0.08)", borderBottom: "1px solid rgba(59,130,246,0.2)", padding: "18px 24px", display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#3b82f6" }} />
-                <span style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#3b82f6" }}>MOBA — Honor of Kings · Mobile Legends</span>
+                <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#3b82f6" }}>MOBA — Honor of Kings · Mobile Legends</span>
               </div>
               <div style={{ padding: "8px 0" }}>
                 {mobaRows.map((row) => (
                   <div key={row.result} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                    <span style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)" }}>{row.result}</span>
+                    <span style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)" }}>{row.result}</span>
                     <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 15, fontWeight: 700, color: row.color }}>{row.pts != null ? `${row.pts} pt${row.pts === 1 ? "" : "s"}` : "—"}</span>
                   </div>
                 ))}
@@ -84,20 +84,20 @@ export default function PageCompetition() {
             <div style={{ background: "#111", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 14, overflow: "hidden" }}>
               <div style={{ background: "rgba(239,68,68,0.08)", borderBottom: "1px solid rgba(239,68,68,0.2)", padding: "18px 24px", display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#ef4444" }} />
-                <span style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#ef4444" }}>TPS Battle Royale — PUBG Mobile · Free Fire</span>
+                <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#ef4444" }}>TPS Battle Royale — PUBG Mobile · Free Fire</span>
               </div>
               <div style={{ padding: "8px 0" }}>
                 {tpsRows.length ? tpsRows.map((row: any) => (
                   <div key={row.result} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                    <span style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)" }}>{row.result}</span>
+                    <span style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)" }}>{row.result}</span>
                     <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 15, fontWeight: 700, color: row.color }}>{row.pts} pts</span>
                   </div>
                 )) : (
-                  <div style={{ padding: "12px 24px", fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.3)" }}>Chargement…</div>
+                  <div style={{ padding: "12px 24px", fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.3)" }}>Chargement…</div>
                 )}
                 {tps?.elimination != null && (
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 24px" }}>
-                    <span style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)" }}>Chaque élimination</span>
+                    <span style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)" }}>Chaque élimination</span>
                     <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 15, fontWeight: 700, color: "#14b8a6" }}>+{tps.elimination} pt</span>
                   </div>
                 )}
@@ -111,8 +111,8 @@ export default function PageCompetition() {
       {/* ── Disciplines ── */}
       <section style={{ padding: "80px 28px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Inter:Medium',sans-serif", fontWeight: 500, fontSize: 26, letterSpacing: "-0.6px", color: "#fff", margin: "0 0 8px" }}>Disciplines</h2>
-          <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: "0 0 40px" }}>Format détaillé pour chacun des quatre jeux officiels.</p>
+          <h2 style={{ fontFamily: "'Manrope:Medium',sans-serif", fontWeight: 500, fontSize: 26, letterSpacing: "-0.6px", color: "#fff", margin: "0 0 8px" }}>Disciplines</h2>
+          <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 14, color: "rgba(255,255,255,0.4)", margin: "0 0 40px" }}>Format détaillé pour chacun des quatre jeux officiels.</p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }} className="disc-grid">
             {DISCIPLINE_ORDER.map((id) => {
@@ -129,13 +129,13 @@ export default function PageCompetition() {
                       <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 10, color: d.color, background: d.color === "#3b82f6" ? "rgba(59,130,246,0.1)" : "rgba(239,68,68,0.1)", border: `1px solid ${d.color === "#3b82f6" ? "rgba(59,130,246,0.25)" : "rgba(239,68,68,0.25)"}`, padding: "2px 8px", borderRadius: 4, letterSpacing: "0.8px", textTransform: "uppercase" }}>{d.type}</span>
                       <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: "0.5px" }}>{d.format} · {teams} participants</span>
                     </div>
-                    <h3 style={{ fontFamily: "'Inter:Medium',sans-serif", fontWeight: 500, fontSize: 20, color: "#fff", margin: 0, letterSpacing: "-0.4px" }}>{real?.nom || d.title}</h3>
+                    <h3 style={{ fontFamily: "'Manrope:Medium',sans-serif", fontWeight: 500, fontSize: 20, color: "#fff", margin: 0, letterSpacing: "-0.4px" }}>{real?.nom || d.title}</h3>
                   </div>
                   <div style={{ padding: "20px 28px", display: "flex", flexDirection: "column", gap: 10 }}>
                     {d.details.map((line) => (
                       <div key={line} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                         <span style={{ flexShrink: 0, marginTop: 2 }}><IconCheck /></span>
-                        <span style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{line}</span>
+                        <span style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{line}</span>
                       </div>
                     ))}
                   </div>
@@ -149,15 +149,15 @@ export default function PageCompetition() {
 
       <section style={{ padding: "80px 28px", textAlign: "center" }}>
         <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Inter:Medium',sans-serif", fontWeight: 500, fontSize: "clamp(26px,4vw,42px)", letterSpacing: "-1.2px", color: "#fff", margin: "0 0 16px" }}>
+          <h2 style={{ fontFamily: "'Manrope:Medium',sans-serif", fontWeight: 500, fontSize: "clamp(26px,4vw,42px)", letterSpacing: "-1.2px", color: "#fff", margin: "0 0 16px" }}>
             Prêt à concourir ?
           </h2>
-          <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 15, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, margin: "0 0 36px" }}>
+          <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 15, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, margin: "0 0 36px" }}>
             Inscris-toi via le formulaire officiel de la saison 2027.
           </p>
           <button
             onClick={openForm}
-            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "13px 28px", borderRadius: 6, fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
+            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "13px 28px", borderRadius: 6, fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, fontWeight: 500, border: "none", cursor: "pointer", transition: "opacity 0.15s" }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >

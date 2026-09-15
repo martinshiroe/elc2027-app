@@ -34,16 +34,16 @@ export default function PageJoueurs() {
             <div style={{ fontFamily: "'Roboto Mono:Regular','Roboto Mono',monospace", fontSize: 11, color: "#14b8a6", letterSpacing: "1.2px", textTransform: "uppercase", marginBottom: 16 }}>
               Saison 2027 · Inscriptions
             </div>
-            <h1 style={{ fontFamily: "'Inter:Medium','Inter',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 16px", lineHeight: 1.05 }}>
+            <h1 style={{ fontFamily: "'Manrope:Medium','Manrope',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 16px", lineHeight: 1.05 }}>
               Joueurs
             </h1>
-            <p style={{ fontFamily: "'Inter:Regular','Inter',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 500, lineHeight: 1.75, margin: 0 }}>
+            <p style={{ fontFamily: "'Manrope:Regular','Manrope',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 500, lineHeight: 1.75, margin: 0 }}>
               Tous les joueurs inscrits à la saison 2027, par discipline.
             </p>
           </div>
           <button
             onClick={openForm}
-            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "12px 24px", borderRadius: 6, fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, fontWeight: 500, border: "none", cursor: "pointer", whiteSpace: "nowrap", transition: "opacity 0.15s", flexShrink: 0 }}
+            style={{ background: "#14b8a6", color: "#0e0e0e", padding: "12px 24px", borderRadius: 6, fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, fontWeight: 500, border: "none", cursor: "pointer", whiteSpace: "nowrap", transition: "opacity 0.15s", flexShrink: 0 }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
@@ -64,7 +64,7 @@ export default function PageJoueurs() {
                   onClick={() => setFilter(key)}
                   style={{
                     padding: "7px 16px", borderRadius: 7,
-                    fontFamily: "'Inter:Medium',sans-serif", fontSize: 13,
+                    fontFamily: "'Manrope:Medium',sans-serif", fontSize: 13,
                     background: isActive ? (key === "all" ? "#14b8a6" : color) : "#111",
                     color: isActive ? (key === "all" ? "#0e0e0e" : "#fff") : "rgba(255,255,255,0.45)",
                     border: isActive ? "none" : "1px solid rgba(255,255,255,0.08)",
@@ -82,10 +82,10 @@ export default function PageJoueurs() {
               {filtered.map((j: any, i: number) => (
                 <div key={j.id || i} style={{ background: "#111", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, padding: "20px 18px", textAlign: "center" }}>
                   <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#161616", border: "1px solid rgba(255,255,255,0.08)", margin: "0 auto 12px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                    {j.photo ? <img src={j.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 18, color: "rgba(255,255,255,0.3)" }}>{(j.pseudo || j.nom || "?")[0]}</span>}
+                    {j.photo ? <img src={j.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 18, color: "rgba(255,255,255,0.3)" }}>{(j.pseudo || j.nom || "?")[0]}</span>}
                   </div>
-                  <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#fff" }}>{j.pseudo || j.nom}</div>
-                  {j.equipe && <div style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{j.equipe}</div>}
+                  <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#fff" }}>{j.pseudo || j.nom}</div>
+                  {j.equipe && <div style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{j.equipe}</div>}
                 </div>
               ))}
             </div>
@@ -98,15 +98,15 @@ export default function PageJoueurs() {
                   <path d="M19 8v6M22 11h-6" stroke="#14b8a6" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </div>
-              <p style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 15, color: "rgba(255,255,255,0.35)", margin: "0 0 8px" }}>
+              <p style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 15, color: "rgba(255,255,255,0.35)", margin: "0 0 8px" }}>
                 Les inscriptions sont en cours
               </p>
-              <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.2)", margin: "0 0 28px", lineHeight: 1.7 }}>
+              <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.2)", margin: "0 0 28px", lineHeight: 1.7 }}>
                 La liste des joueurs inscrits apparaîtra ici dès la clôture des inscriptions.
               </p>
               <button
                 onClick={openForm}
-                style={{ background: "rgba(20,184,166,0.12)", color: "#14b8a6", border: "1px solid rgba(20,184,166,0.3)", padding: "10px 22px", borderRadius: 7, fontFamily: "'Inter:Medium',sans-serif", fontSize: 13, cursor: "pointer", transition: "background 0.15s" }}
+                style={{ background: "rgba(20,184,166,0.12)", color: "#14b8a6", border: "1px solid rgba(20,184,166,0.3)", padding: "10px 22px", borderRadius: 7, fontFamily: "'Manrope:Medium',sans-serif", fontSize: 13, cursor: "pointer", transition: "background 0.15s" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(20,184,166,0.2)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(20,184,166,0.12)")}
               >
@@ -123,8 +123,8 @@ export default function PageJoueurs() {
               <div key={c.type} style={{ background: c.bg, border: `1px solid ${c.border}`, borderRadius: 10, padding: "18px 22px", display: "flex", gap: 14, alignItems: "flex-start" }}>
                 <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 10, color: c.color, background: c.bg, border: `1px solid ${c.border}`, padding: "3px 8px", borderRadius: 4, letterSpacing: "0.8px", textTransform: "uppercase", flexShrink: 0, marginTop: 2 }}>{c.type}</span>
                 <div>
-                  <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#fff", marginBottom: 4 }}>{c.title}</div>
-                  <div style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 12.5, color: "rgba(255,255,255,0.45)" }}>{c.desc}</div>
+                  <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#fff", marginBottom: 4 }}>{c.title}</div>
+                  <div style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 12.5, color: "rgba(255,255,255,0.45)" }}>{c.desc}</div>
                 </div>
               </div>
             ))}

@@ -32,7 +32,7 @@ export default function LegalModal({ open, onClose }: { open: boolean; onClose: 
         style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 14, maxWidth: 640, width: "100%", maxHeight: "80vh", display: "flex", flexDirection: "column" }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 24px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-          <span style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 16, color: "#fff" }}>Mentions légales & statuts</span>
+          <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 16, color: "#fff" }}>Mentions légales & statuts</span>
           <button
             onClick={onClose}
             aria-label="Fermer"
@@ -41,7 +41,7 @@ export default function LegalModal({ open, onClose }: { open: boolean; onClose: 
             ✕
           </button>
         </div>
-        <div style={{ padding: "22px 24px", overflowY: "auto", fontFamily: "'Inter:Regular',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, whiteSpace: "pre-wrap" }}>
+        <div style={{ padding: "22px 24px", overflowY: "auto", fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13.5, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, whiteSpace: "pre-wrap" }}>
           {loading ? "Chargement…" : text || "Aucun texte légal renseigné pour le moment."}
         </div>
       </div>

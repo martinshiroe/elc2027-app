@@ -74,10 +74,10 @@ export default function PageClassements() {
           <div style={{ fontFamily: "'Roboto Mono:Regular','Roboto Mono',monospace", fontSize: 11, color: "#14b8a6", letterSpacing: "1.2px", textTransform: "uppercase", marginBottom: 16 }}>
             Saison 2027 · Temps réel
           </div>
-          <h1 style={{ fontFamily: "'Inter:Medium','Inter',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px", lineHeight: 1.05 }}>
+          <h1 style={{ fontFamily: "'Manrope:Medium','Manrope',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px", lineHeight: 1.05 }}>
             Classements
           </h1>
-          <p style={{ fontFamily: "'Inter:Regular','Inter',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 540, lineHeight: 1.75, margin: 0 }}>
+          <p style={{ fontFamily: "'Manrope:Regular','Manrope',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 540, lineHeight: 1.75, margin: 0 }}>
             Standings officiels mis à jour après chaque match. Sélectionne une discipline pour voir le classement en cours.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function PageClassements() {
                 onClick={() => setActiveGame(key)}
                 style={{
                   padding: "9px 20px", borderRadius: 8,
-                  fontFamily: "'Inter:Medium',sans-serif", fontSize: 13,
+                  fontFamily: "'Manrope:Medium',sans-serif", fontSize: 13,
                   background: isActive ? g.color : "#111",
                   color: isActive ? "#fff" : "rgba(255,255,255,0.5)",
                   border: isActive ? "none" : "1px solid rgba(255,255,255,0.08)",
@@ -123,7 +123,7 @@ export default function PageClassements() {
               displayRows.map((r: any, i: number) => (
                 <div key={isMoba ? r.equipe : r.joueur} style={{ padding: "14px 24px", display: "grid", gridTemplateColumns: isMoba ? "48px 1fr 80px 80px 80px 80px" : "48px 1fr 100px 100px", gap: 12, alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
                   <span style={{ textAlign: "center", fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 13, color: "rgba(255,255,255,0.4)" }}>{i + 1}</span>
-                  <span style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#fff" }}>{isMoba ? r.equipe : r.joueur}</span>
+                  <span style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#fff" }}>{isMoba ? r.equipe : r.joueur}</span>
                   {isMoba ? (
                     <>
                       <span style={{ textAlign: "right", fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 13, color: "rgba(255,255,255,0.6)" }}>{r.v}</span>
@@ -144,8 +144,8 @@ export default function PageClassements() {
                     <circle cx="10" cy="10" r="8.5" stroke="rgba(255,255,255,0.1)" strokeWidth="1"/>
                   </svg>
                 </div>
-                <p style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 15, color: "rgba(255,255,255,0.35)", margin: "0 0 6px" }}>Classement disponible dès le début de la saison</p>
-                <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.2)", margin: 0 }}>Aucun match n'a encore été joué pour {game.label}.</p>
+                <p style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 15, color: "rgba(255,255,255,0.35)", margin: "0 0 6px" }}>Classement disponible dès le début de la saison</p>
+                <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.2)", margin: 0 }}>Aucun match n'a encore été joué pour {game.label}.</p>
               </div>
             )}
           </div>

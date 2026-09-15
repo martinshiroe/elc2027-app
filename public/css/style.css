@@ -154,7 +154,7 @@ td.clan-cell{color:var(--text-dim);font-size:11.5px;}
 
 /* ---------- Visual 2 ---------- */
 .v2-body{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;margin-top:20px;}
-.phase-item{background:var(--panel-2);border:1px solid var(--border-soft);border-left:3px solid var(--blue);border-radius:6px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;}
+.phase-item{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:6px;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;}
 .phase-item.finale{border-left-color:var(--red);}
 .phase-titre{font-size:11.5px;font-weight:700;}
 .phase-sous{font-size:10px;color:var(--text-dim);margin-top:3px;}
@@ -272,7 +272,7 @@ h2.admin-h{font-size:16px;margin:0 0 4px;}
 .timeline{display:flex;flex-direction:column;gap:8px;}
 .timeline-item{
   display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--panel-2);
-  border:1px solid var(--border-soft);border-left:3px solid var(--teal);border-radius:6px;padding:10px 14px;
+  border:1px solid var(--border-soft);border-radius:6px;padding:10px 14px;
 }
 .timeline-item .ti-phase{font-size:12px;font-weight:700;}
 .timeline-item .ti-lieu{font-size:10px;color:var(--text-dim);margin-top:2px;}

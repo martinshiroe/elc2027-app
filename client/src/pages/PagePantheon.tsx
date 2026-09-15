@@ -24,12 +24,12 @@ function DistinctionCard({ d, laureat }: { d: typeof DISTINCTIONS[0]; laureat: a
             </svg>
           )}
         </div>
-        <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 16, color: laureat ? "#fff" : "rgba(255,255,255,0.25)", marginBottom: 6 }}>{laureat?.nom || "— à désigner —"}</div>
+        <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 16, color: laureat ? "#fff" : "rgba(255,255,255,0.25)", marginBottom: 6 }}>{laureat?.nom || "— à désigner —"}</div>
         <div style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 10, color: "rgba(255,255,255,0.15)", marginBottom: 28, letterSpacing: "0.5px" }}>SAISON 2027 EN COURS</div>
       </div>
       <div style={{ borderTop: `1px solid ${d.border}22`, padding: "20px 28px 28px" }}>
-        <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 13, color: d.text, marginBottom: 8 }}>{d.subtitle}</div>
-        <p style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.65, margin: 0 }}>{d.desc}</p>
+        <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 13, color: d.text, marginBottom: 8 }}>{d.subtitle}</div>
+        <p style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.65, margin: 0 }}>{d.desc}</p>
       </div>
     </div>
   );
@@ -55,10 +55,10 @@ export default function PagePantheon() {
           <div style={{ fontFamily: "'Roboto Mono:Regular','Roboto Mono',monospace", fontSize: 11, color: "#14b8a6", letterSpacing: "1.2px", textTransform: "uppercase", marginBottom: 16 }}>
             Distinctions officielles · Saison 2027
           </div>
-          <h1 style={{ fontFamily: "'Inter:Medium','Inter',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px", lineHeight: 1.05 }}>
+          <h1 style={{ fontFamily: "'Manrope:Medium','Manrope',sans-serif", fontWeight: 500, fontSize: "clamp(36px,5vw,64px)", letterSpacing: "-2px", color: "#fff", margin: "0 0 20px", lineHeight: 1.05 }}>
             Panthéon
           </h1>
-          <p style={{ fontFamily: "'Inter:Regular','Inter',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 560, lineHeight: 1.75, margin: 0 }}>
+          <p style={{ fontFamily: "'Manrope:Regular','Manrope',sans-serif", fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 560, lineHeight: 1.75, margin: 0 }}>
             Les distinctions qui gravent le nom d'un joueur dans l'histoire de l'ELC. Chaque cadre a une couleur fixe, reconnaissable au premier coup d'œil.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function PagePantheon() {
       <section style={{ padding: "0 28px 80px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ background: "#111", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, padding: "40px 48px" }}>
-            <h2 style={{ fontFamily: "'Inter:Medium',sans-serif", fontWeight: 500, fontSize: 22, letterSpacing: "-0.5px", color: "#fff", margin: "0 0 28px" }}>Comment sont-elles attribuées ?</h2>
+            <h2 style={{ fontFamily: "'Manrope:Medium',sans-serif", fontWeight: 500, fontSize: 22, letterSpacing: "-0.5px", color: "#fff", margin: "0 0 28px" }}>Comment sont-elles attribuées ?</h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 24 }} className="attrib-grid">
               {[
                 { step: "01", title: "Fin de saison",      desc: "Les distinctions sont décernées à l'issue de la dernière journée de compétition, une fois tous les résultats validés." },
@@ -90,8 +90,8 @@ export default function PagePantheon() {
                 <div key={s.step} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <span style={{ fontFamily: "'Roboto Mono:Regular',monospace", fontSize: 11, color: "#14b8a6", flexShrink: 0, marginTop: 3 }}>{s.step}</span>
                   <div>
-                    <div style={{ fontFamily: "'Inter:Medium',sans-serif", fontSize: 14, color: "#fff", marginBottom: 6 }}>{s.title}</div>
-                    <div style={{ fontFamily: "'Inter:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.4)", lineHeight: 1.65 }}>{s.desc}</div>
+                    <div style={{ fontFamily: "'Manrope:Medium',sans-serif", fontSize: 14, color: "#fff", marginBottom: 6 }}>{s.title}</div>
+                    <div style={{ fontFamily: "'Manrope:Regular',sans-serif", fontSize: 13, color: "rgba(255,255,255,0.4)", lineHeight: 1.65 }}>{s.desc}</div>
                   </div>
                 </div>
               ))}
