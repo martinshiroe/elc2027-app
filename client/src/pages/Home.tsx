@@ -67,7 +67,7 @@ function Hero({ onSection, heroImage }: { onSection: (id: string) => void; heroI
           <span style={{ fontFamily: "'Roboto Mono:Regular', 'Roboto Mono', monospace", fontSize: 11, color: "#14b8a6", letterSpacing: "1.2px", textTransform: "uppercase" }}>East League of Cameroon · Saison 2027</span>
         </div>
 
-        <h1 style={{ fontFamily: "'Orbitron', sans-serif", fontWeight: 700, fontSize: "clamp(32px, 5.6vw, 74px)", lineHeight: 1.15, letterSpacing: "-0.01em", color: "#fff", margin: "0 auto 24px", maxWidth: 980, textWrap: "balance" as any }}>
+        <h1 style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "clamp(40px, 7vw, 92px)", lineHeight: 1.05, letterSpacing: "-0.005em", textTransform: "uppercase" as any, color: "#fff", margin: "0 auto 24px", maxWidth: 940, textWrap: "balance" as any }}>
           Compétis avec les meilleurs — sans compromis
         </h1>
 
