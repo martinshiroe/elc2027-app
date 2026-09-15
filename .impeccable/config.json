@@ -1,0 +1,71 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/admin.html"
+        ],
+        "createdAt": "2026-09-15T23:33:12.040Z",
+        "reason": "flagged shadow is neutral black (rgba(0,0,0,.34) / rgba(0,0,0,.4)) elevation, no hue; detector misreads it as colored when composited over dark bg"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "public/app.html"
+        ],
+        "createdAt": "2026-09-15T23:33:12.283Z",
+        "reason": "same shared style.css elevation shadow rule as admin.html; neutral black, no hue"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "public/admin.html"
+        ],
+        "createdAt": "2026-09-15T23:33:12.530Z",
+        "reason": "radial-gradient rule belongs to .pc-frame-* (Pantheon laureate photo frames, color-coded by game family) which is not rendered on this page at all; static analysis is matching the shared style.css, not admin.html's actual DOM"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "public/app.html"
+        ],
+        "createdAt": "2026-09-15T23:33:12.772Z",
+        "reason": "same .pc-frame-* rule, not rendered on this page (React vitrine only); pre-existing, intentional color-coding by game family on the Pantheon page"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "public/app.html"
+        ],
+        "createdAt": "2026-09-15T23:33:18.176Z",
+        "reason": "logo <img> src is set dynamically by main.js at runtime (elc-logo-img class), not a broken/missing image"
+      },
+      {
+        "rule": "em-dash-overuse",
+        "value": "*",
+        "files": [
+          "public/admin.html"
+        ],
+        "createdAt": "2026-09-15T23:37:08.655Z",
+        "reason": "French typographic convention (tiret cadratin) used correctly throughout labels (ex: 'Visuel 4 — Bracket MOBA'); site content is French, not AI-generated cadence"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "public/admin.html"
+        ],
+        "createdAt": "2026-09-15T23:39:57.467Z",
+        "reason": "logo <img> src is set dynamically by admin.js at runtime (elc-logo-img class), not a broken/missing image"
+      }
+    ]
+  }
+}
