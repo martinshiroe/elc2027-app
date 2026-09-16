@@ -13,6 +13,7 @@ export type SiteData = {
     derniereMaj?: string;
     googleFormUrl?: string;
     heroImage?: string;
+    ctaImage?: string;
   };
   competition: Record<
     string,

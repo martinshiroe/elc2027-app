@@ -344,10 +344,15 @@ function DisciplinesSection({ data }: { data: SiteData | null }) {
 
 // ─── CTA ──────────────────────────────────────────────────────────────────────
 
-function CtaSection() {
+function CtaSection({ ctaImage }: { ctaImage?: string }) {
   return (
-    <section style={{ background: "#0e0e0e", padding: "120px 28px", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-      <div style={{ maxWidth: 720, margin: "0 auto" }}>
+    <section style={{ position: "relative", overflow: "hidden", background: "#0e0e0e", padding: "120px 28px", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
+      {ctaImage && (
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url("${ctaImage}")`, backgroundSize: "cover", backgroundPosition: "center", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(14,14,14,0.88) 0%, rgba(14,14,14,0.94) 50%, rgba(14,14,14,0.98) 100%)" }} />
+        </div>
+      )}
+      <div style={{ maxWidth: 720, margin: "0 auto", position: "relative" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 20, padding: "5px 14px", marginBottom: 32 }}>
           <span style={{ fontFamily: "'Roboto Mono:Regular', monospace", fontSize: 11, color: "#22c55e", letterSpacing: "1px", textTransform: "uppercase" }}>
             Inscriptions bientôt disponibles · Saison 2027
@@ -394,7 +399,7 @@ export default function Home() {
       <FeatureSection data={data} />
       <StatsSection />
       <DisciplinesSection data={data} />
-      <CtaSection />
+      <CtaSection ctaImage={data?.meta?.ctaImage} />
     </div>
   );
 }
